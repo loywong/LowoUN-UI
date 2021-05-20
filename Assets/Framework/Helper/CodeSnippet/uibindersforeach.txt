@@ -1,0 +1,1 @@
+UIHub.instance.GetBinders<$uibinder$> (UIPanelType.$panelTyp$).ForEach (i => i.DoSomething ());

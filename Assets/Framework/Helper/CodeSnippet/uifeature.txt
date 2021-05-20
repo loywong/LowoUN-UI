@@ -1,0 +1,22 @@
+namespace LowoUN.Business.UI.Feature
+{
+	public class UIFeature_$fn$ : LowoUN.Util.UIFeatureBase
+	{
+		public static UIFeature_$fn$ instance{get{ return _instance as UIFeature_$fn$; }}
+		private static LowoUN.Util.UIFeatureBase _instance;
+		public UIFeature_$fn$ () {
+			_instance = this;
+		}
+
+		#region implemented abstract members of UIFeatureBase
+		public override void OnStart ()
+		{
+			//throw new System.NotImplementedException ();
+		}
+		public override void OnEnd ()
+		{
+			//throw new System.NotImplementedException ();
+		}
+		#endregion
+	}
+}

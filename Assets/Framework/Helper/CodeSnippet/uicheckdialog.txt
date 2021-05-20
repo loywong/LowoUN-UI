@@ -1,0 +1,10 @@
+UIHub.instance.LoadCheckDialogUI (
+					"Warning",
+					"Are you sure to delete this profile?",
+					new Dictionary<UIEnum_CheckDlgBtnType, string> (){ { UIEnum_CheckDlgBtnType.Confirm, "Confirm" }, { UIEnum_CheckDlgBtnType.Cancel, "Cancel" } },
+					btnType => {
+						if (btnType == UIEnum_CheckDlgBtnType.Confirm) {
+							//TODO:
+						}
+					}
+				);

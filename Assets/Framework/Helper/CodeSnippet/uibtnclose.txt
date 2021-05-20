@@ -1,0 +1,1 @@
+UIHub.instance.GetBinder<$uibinder$> ((int)arr [0]).OnBtnClose ();

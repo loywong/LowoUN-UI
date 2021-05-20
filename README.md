@@ -1,2 +1,31 @@
-# LowoUN-UI
-LowoUN-UI is an ui framework for unity project based on UGUI with templated way to achieve UI production, I think it's a great architecture to implement coding in the form of configuration, and it includes many useful features, so the ui development progress will be accelerated.
+# LownUN-UI
+
+Based on the Unity version 2017.1.1f1.
+
+This README would normally document whatever steps are necessary to get your application up and running.
+
+### What is this repository for? ###
+
+* Quick summary
+* Version
+* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+
+### How do I get set up? ###
+
+* Summary of set up
+* Configuration
+* Dependencies
+* Database configuration
+* How to run tests
+* Deployment instructions
+
+### Contribution guidelines ###
+
+* Writing tests
+* Code review
+* Other guidelines
+
+### Who do I talk to? ###
+
+* Repo owner or admin
+* Other community or team contact

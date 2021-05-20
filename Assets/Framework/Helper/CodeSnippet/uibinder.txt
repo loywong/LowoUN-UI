@@ -1,0 +1,54 @@
+namespace LowoUN.Business.UI
+{
+	using HolderObjs = UIHandler.Objs_$expression$;
+
+	public class UIBinder$expression$ : LowoUN.Module.UI.UIBinder
+	{
+		private string _icon {
+			set{
+				onUpdateImg ((int)HolderObjs.Img_Achieve, value);
+			}
+		}
+
+		private string _name {
+			set{
+				onUpdateTxt ((int)HolderObjs.Txt_Name, value);
+			}
+		}
+
+		public UIBinder$expression$ (int uiPanelType, int instanceID) : base (uiPanelType, instanceID) {
+
+		}
+
+		protected override void OnLayout () { }
+
+		//if this is a item type panel, REMOVE THE CODE BELOW!!!!!!!!!!!!!!!!!!!!!!
+		public override void OnStart ()
+		{
+			base.OnStart ();
+
+			var id = 1;
+
+			//AchievementConfig item = CD.Get<AchievementConfig> (id);
+			//_name = item.Name;
+			//_desc = item.Desc;
+			//_icon = item.Img;
+		}
+
+		//if this is a normal type panel, REMOVE THE CODE BELOW!!!!!!!!!!!!!!!!!!!!!!
+		public override void OnStart (object info)
+		{
+			base.OnStart (info);
+
+			var id = (int)info;
+
+			//AchievementConfig item = CD.Get<AchievementConfig> (id);
+			//_name = item.Name;
+			//_desc = item.Desc;
+			//_icon = item.Img;
+		}
+
+		protected override void OnEnd () { }
+	}
+}
+$end$
