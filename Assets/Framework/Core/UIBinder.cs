@@ -151,7 +151,7 @@ namespace LowoUN.Module.UI
 		protected abstract void OnEnd ();//should reset all variables
 		private void OnEndSon (){
 			//1, unload lists' items
-			//TODO [LowoUI-UN]: clear list items' id when holder on end.
+			//TODO [LowoUN-UI]: clear list items' id when holder on end.
 			foreach (var insIDs in lstItems.Values) {
 				if(insIDs != null && insIDs.Count > 0)
 					insIDs.ForEach(i => UIHub.instance.CloseUI (i));
@@ -184,7 +184,7 @@ namespace LowoUN.Module.UI
 		}
 
 		/// <summary>
-		/// 隐藏本面板以及嵌套的lstItem，sonItem，sonGeneral3种类型子面板所厝氲?model.
+		/// 锟斤拷锟截憋拷锟斤拷锟斤拷约锟角讹拷椎锟絣stItem锟斤拷sonItem锟斤拷sonGeneral3锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷?model.
 		/// </summary>
 		public void Toggle3DModel (bool isShoworHide) {
 			model3Ds.ForEach (i=>{if(i != null){i.SetActive(isShoworHide);}});

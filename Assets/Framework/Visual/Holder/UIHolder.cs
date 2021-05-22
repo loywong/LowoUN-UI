@@ -140,7 +140,7 @@ namespace LowoUN.Module.UI
 				_binder = binder;
 			else {
 				#if UNITY_EDITOR
-				Debug.LogWarning("====== LowoUI-UN ===> no binder instance created for current holder type: " + typeID.ToString());
+				Debug.LogWarning("====== LowoUN-UI ===> no binder instance created for current holder type: " + typeID.ToString());
 				#endif
 			}
 		}
@@ -172,7 +172,7 @@ namespace LowoUN.Module.UI
 				}
 					
 				if (objDict.ContainsKey (id))
-					Debug.LogError ("====== LowoUI-UN ===> holder object ID has existed: " + id);
+					Debug.LogError ("====== LowoUN-UI ===> holder object ID has existed: " + id);
 				else
 	                objDict.Add(id, obj.obj);
 	        }
@@ -343,7 +343,7 @@ namespace LowoUN.Module.UI
 	            }
 	        }
 
-			//Debug.LogWarning("====== LowoUI-UN ===> no game object set to the serialized variable!");
+			//Debug.LogWarning("====== LowoUN-UI ===> no game object set to the serialized variable!");
 	        return false;
 	    }
 
@@ -367,7 +367,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<Text>() != null) 
 					go.GetComponent<Text>().text = textValue;
 				else
-					Debug.LogWarning(string.Format("====== LowoUI-UN ===>[func: SetText] holder type:{0} / objID:{1} / val:{2}, no a text type component!!!", typeID.ToString(), uiObjectID, textValue));
+					Debug.LogWarning(string.Format("====== LowoUN-UI ===>[func: SetText] holder type:{0} / objID:{1} / val:{2}, no a text type component!!!", typeID.ToString(), uiObjectID, textValue));
 	        });
 		}
 
@@ -383,7 +383,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<Text>() != null) 
 					go.GetComponent<Text>().alignment = align;
 				else 
-					Debug.LogWarning(string.Format("====== LowoUI-UN ===>[func: SetTextAlign] holder type:{0} / objID:{1} / val:{2}, no a text type component!!!", typeID.ToString(), uiObjectID, align.ToString()));
+					Debug.LogWarning(string.Format("====== LowoUN-UI ===>[func: SetTextAlign] holder type:{0} / objID:{1} / val:{2}, no a text type component!!!", typeID.ToString(), uiObjectID, align.ToString()));
 			});
 		}
 
@@ -394,7 +394,7 @@ namespace LowoUN.Module.UI
 						go.SetActive(false);
 						
 						//#if UNITY_EDITOR
-						//Debug.LogWarning("====== LowoUI-UN ===> mistake image name: empty or null/ holder:  " + insID + "/ objID: " + uiObjectID);
+						//Debug.LogWarning("====== LowoUN-UI ===> mistake image name: empty or null/ holder:  " + insID + "/ objID: " + uiObjectID);
 						//#endif
 					}
 					else {
@@ -418,8 +418,8 @@ namespace LowoUN.Module.UI
 					}
 				}
 				else {
-					//Debug.LogError("====== LowoUI-UN ===> No Image component found: " + insID + "/ objID: " + uiObjectID);
-					Debug.LogWarning(string.Format("====== LowoUI-UN ===>[func: SetImg] holder type:{0} / objID:{1} / val:{2}, No a image type component!!!", typeID.ToString(), uiObjectID, isWeb.ToString()));
+					//Debug.LogError("====== LowoUN-UI ===> No Image component found: " + insID + "/ objID: " + uiObjectID);
+					Debug.LogWarning(string.Format("====== LowoUN-UI ===>[func: SetImg] holder type:{0} / objID:{1} / val:{2}, No a image type component!!!", typeID.ToString(), uiObjectID, isWeb.ToString()));
 				}
 	        });
 		}
@@ -663,7 +663,7 @@ namespace LowoUN.Module.UI
 				{
                     Graphic g = go.GetComponent<Graphic>();
                     if (g == null)
-						Debug.LogWarning("====== LowoUI-UN ===> No graphic ui component attached!");
+						Debug.LogWarning("====== LowoUN-UI ===> No graphic ui component attached!");
                     else
                     {
                         g.color = uiColor;
@@ -682,7 +682,7 @@ namespace LowoUN.Module.UI
 				}
 				else {
 					if(go.GetComponent<RawImage>() == null)
-						Debug.LogWarning("====== LowoUI-UN ===> No RawImage ui component attached on panel: " + uiObjectID +" / obj id: "+ uiObjectID);
+						Debug.LogWarning("====== LowoUN-UI ===> No RawImage ui component attached on panel: " + uiObjectID +" / obj id: "+ uiObjectID);
 					else 
 					{
 						RawImage img = go.GetComponent<RawImage>();
@@ -713,7 +713,7 @@ namespace LowoUN.Module.UI
 				}
 				else {
 					if(go.GetComponent<RawImage>() == null)
-						Debug.LogWarning("====== LowoUI-UN ===> No RawImage ui component attached on panel: " + uiObjectID +" / obj id: "+ uiObjectID);
+						Debug.LogWarning("====== LowoUN-UI ===> No RawImage ui component attached on panel: " + uiObjectID +" / obj id: "+ uiObjectID);
 					else
 					{
 						RawImage img = go.GetComponent<RawImage>();
@@ -749,7 +749,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<UITogl>() != null)
 					go.GetComponent<UITogl>().SetSelectState(isTriggle);
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> No UICheckBox component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> No UICheckBox component attached!");
 			});
 		}
 
@@ -758,7 +758,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<IGroup>() != null)
 					go.GetComponent<IGroup>().SetSelectIdx(selectIdx);
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> No UITabGroup component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> No UITabGroup component attached!");
 			});
 		}
 
@@ -767,7 +767,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<UIGroup>() != null)
 					go.GetComponent<UIGroup>().SetNames(names);
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> No UITabGroup component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> No UITabGroup component attached!");
 			});
 		}
 
@@ -776,7 +776,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<IName>() != null)
 					go.GetComponent<IName>().SetName(name);
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> this component doesn't implement IName interface: " + go.name);
+					Debug.LogWarning("====== LowoUN-UI ===> this component doesn't implement IName interface: " + go.name);
 			});
 		}
 
@@ -786,14 +786,14 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<IProgress>() != null)
 					go.GetComponent<IProgress>().SetValue(currentValue, maxValue);
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> No ProcessBar component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> No ProcessBar component attached!");
 			});
 		}
 
 		public bool SetImoji (int uiObjectID, string texture) {
 			return SafeObjSet(uiObjectID, (GameObject go) => {
 				if(go.GetComponent<Image>() == null)
-					Debug.LogWarning("====== LowoUI-UN ===> No imoji image component: " + go.name);
+					Debug.LogWarning("====== LowoUN-UI ===> No imoji image component: " + go.name);
 				else 
 				{
 					if(!string.IsNullOrEmpty(texture)) {
@@ -803,7 +803,7 @@ namespace LowoUN.Module.UI
 						if(s != null)
 							go.GetComponent<Image>().overrideSprite = s;
 						else
-							Debug.LogError("====== LowoUI-UN ===> No imoji texture found: " + go.name + "/ texture : " + texture);
+							Debug.LogError("====== LowoUN-UI ===> No imoji texture found: " + go.name + "/ texture : " + texture);
 
 //						Texture2D t = LowoUN.Module.Asset.Module_Asset.instance.LoadTexture(texture) as Texture2D;
 //						if(t != null){
@@ -812,7 +812,7 @@ namespace LowoUN.Module.UI
 //							go.GetComponent<Image>().material = mat;//.SetTexture("Texture", t);
 //						}
 //						else
-//							Debug.LogError("====== LowoUI-UN ===> No imoji texture found: " + go.name + "/ texture : " + texture);
+//							Debug.LogError("====== LowoUN-UI ===> No imoji texture found: " + go.name + "/ texture : " + texture);
 					}
 					else {
 						SetStateEff(uiObjectID, UIStateType.Hide);
@@ -827,7 +827,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<UISlider>() != null)
 					go.GetComponent<UISlider>().SetValue(percent);
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> No UISlider component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> No UISlider component attached!");
 			});
 		}
 
@@ -838,7 +838,7 @@ namespace LowoUN.Module.UI
                 if (go.GetComponent<UISlider>() != null)
                     go.GetComponent<UISlider>().SetMaxAndMinValue(Max,Min);
                 else
-                    Debug.LogWarning("====== LowoUI-UN ===> No UISlider component attached!");
+                    Debug.LogWarning("====== LowoUN-UI ===> No UISlider component attached!");
             });
         }
 
@@ -847,7 +847,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<UIIpt>() != null)
 					go.GetComponent<UIIpt>().SetValue(stringValue);
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> No UIInputField component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> No UIInputField component attached!");
 			});
 		}
 
@@ -856,7 +856,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<UIIpt>() != null)
 					go.GetComponent<UIIpt>().SetLimit(limit);
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> No UIInputField component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> No UIInputField component attached!");
 			});
 		}
 
@@ -867,7 +867,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<UISonItem>() != null)
 					sonHolderInsID = go.GetComponent<UISonItem>().SetItem(itemInfo);
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> No UI son item type con component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> No UI son item type con component attached!");
 			});
 
 			return sonHolderInsID;
@@ -882,7 +882,7 @@ namespace LowoUN.Module.UI
 					lstIds = go.GetComponent<ILst>().SetItemList(listInfo);
 				}
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> No UIListGeneral component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> No UIListGeneral component attached!");
 			});
 
 			return lstIds;
@@ -897,7 +897,7 @@ namespace LowoUN.Module.UI
                     go.GetComponent<UILoopRoll>().SetInfo(listInfo);
                 }
                 else
-                    Debug.LogWarning("====== LowoUI-UN ===> No UIListGeneral component attached!");
+                    Debug.LogWarning("====== LowoUN-UI ===> No UIListGeneral component attached!");
             });
         }
 
@@ -909,7 +909,7 @@ namespace LowoUN.Module.UI
                 if (go.GetComponent<ILst>() != null)
 					objects = go.GetComponent<UIList>().GetPosList();
                 else
-					Debug.LogWarning("====== LowoUI-UN ===> No UIListGeneral component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> No UIListGeneral component attached!");
             });
 
             return objects;
@@ -922,7 +922,7 @@ namespace LowoUN.Module.UI
 //					go.GetComponent<UILst_Fold>().SetItemFold(idx, isFold);
 //				}
 //				else {
-//					Debug.LogWarning("====== LowoUI-UN ===> UIListGeneral component attached!");
+//					Debug.LogWarning("====== LowoUN-UI ===> UIListGeneral component attached!");
 //				}
 //			});
 //		}
@@ -932,7 +932,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<ILst>() != null)
 					go.GetComponent<ILst>().SetItemFocused(idx);
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> UIListGeneral component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> UIListGeneral component attached!");
 			});
 		}
 
@@ -941,7 +941,7 @@ namespace LowoUN.Module.UI
                 if (go.GetComponent<UIList>() != null)
 					go.GetComponent<UIList>().CheckToSetCon(vec);
                 else
-					Debug.LogWarning("====== LowoUI-UN ===> UIListGeneral component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> UIListGeneral component attached!");
             });
         }
 
@@ -951,7 +951,7 @@ namespace LowoUN.Module.UI
                 if (go.GetComponent<UIList>() != null)
 					posObjects =go.GetComponent<UIList>().GetPosList();
                 else
-					Debug.LogWarning("====== LowoUI-UN ===> UIListGeneral component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> UIListGeneral component attached!");
             });
 
             return posObjects;
@@ -983,7 +983,7 @@ namespace LowoUN.Module.UI
 				if(ep != null)
 					ep.Play();
 				else
-					Debug.LogError("====== LowoUI-UN ===> No IEffect object found! on panel: " + typeID.ToString() + "/ uiObjectID: " + uiObjectID);
+					Debug.LogError("====== LowoUN-UI ===> No IEffect object found! on panel: " + typeID.ToString() + "/ uiObjectID: " + uiObjectID);
 			});
 		}
 
@@ -993,7 +993,7 @@ namespace LowoUN.Module.UI
 //					if(go.GetComponent<UIEventAnimator>() != null)
 //						go.GetComponent<UIEventAnimator>().Play(eventAnimType);
 //					else
-//						Debug.LogWarning("====== LowoUI-UN ===> No UIEventAnimator component attached!");
+//						Debug.LogWarning("====== LowoUN-UI ===> No UIEventAnimator component attached!");
 //				}
 //			});
 //		}
@@ -1004,7 +1004,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<UILocker>() != null)
 					go.GetComponent<UILocker>().SetLock(isLock);
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> No UIEventAnimator component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> No UIEventAnimator component attached!");
 				//}
 			});
 		}
@@ -1015,7 +1015,7 @@ namespace LowoUN.Module.UI
 				if(go.GetComponent<UILocker>() != null)
 					go.GetComponent<UILocker>().SetLockTyp(mask_type);
 				else
-					Debug.LogWarning("====== LowoUI-UN ===> No UIEventAnimator component attached!");
+					Debug.LogWarning("====== LowoUN-UI ===> No UIEventAnimator component attached!");
 				//}
 			});
 		}

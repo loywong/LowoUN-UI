@@ -119,7 +119,7 @@ namespace LowoUN.Module.UI
 			} 
 			else {
 				#if UNITY_EDITOR
-				Debug.LogError ("====== LowoUI-UN ===> No game object has been find!");
+				Debug.LogError ("====== LowoUN-UI ===> No game object has been find!");
 				#endif
 			}
 		}

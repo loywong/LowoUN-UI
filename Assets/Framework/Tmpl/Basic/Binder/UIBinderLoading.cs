@@ -12,7 +12,7 @@ namespace LowoUN.Business.UI
 			set{
 				if (_progress != value) {
 					//#if UNITY_EDITOR
-					//UnityEngine.Debug.Log ("====== LowoUI-UN ======> loading progress : " + value);
+					//UnityEngine.Debug.Log ("====== LowoUN-UI ======> loading progress : " + value);
 					//#endif
 					_progress = value;
 					onUpdateProg ((int)HolderObjs.Prog_Loader, value * 100f, 100f);

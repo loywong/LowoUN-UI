@@ -103,12 +103,12 @@ namespace LowoUN.Module.UI
 
 		void Awake () {
 			if (con == null) 
-				Debug.LogError ("====== LowoUI-UN ===> no container set onto the UIDynamicTxt!");
+				Debug.LogError ("====== LowoUN-UI ===> no container set onto the UIDynamicTxt!");
 			else
 				conRT = con.transform.GetComponent<RectTransform> ();
 			
 			if (txt == null) 
-				Debug.LogError ("====== LowoUI-UN ===> no text component attached onto the UIDynamicTxt!");
+				Debug.LogError ("====== LowoUN-UI ===> no text component attached onto the UIDynamicTxt!");
 		}
 
 		private int curIdxInLst = -1;

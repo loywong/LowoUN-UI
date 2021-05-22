@@ -39,7 +39,7 @@ namespace LowoUN.Module.UI
 		public void EnterScene(int sceneID) {
 			//UnityEngine.Debug.LogError ("load scene: " + (LowoUN.Entry.INI.GameState)sceneID);
 			if (sceneID == -1) {
-				UnityEngine.Debug.LogError ("====== LowoUI-UN ===> Error game scene entered !");
+				UnityEngine.Debug.LogError ("====== LowoUN-UI ===> Error game scene entered !");
 				return;
 			}
 

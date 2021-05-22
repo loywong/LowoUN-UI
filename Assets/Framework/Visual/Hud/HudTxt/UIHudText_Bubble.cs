@@ -15,7 +15,7 @@ namespace LowoUN.Module.UI.HUDText
             get
             {
                 if (_instance == null)
-                    Debug.LogError("====== LowoUI-UN ===> no ui hud text util found !");
+                    Debug.LogError("====== LowoUN-UI ===> no ui hud text util found !");
 
                 return _instance;
             }
@@ -130,7 +130,7 @@ namespace LowoUN.Module.UI.HUDText
                 go.transform.localScale = Vector3.one;
             }
             else
-                Debug.LogError("====== LowoUI-UN ===> bubble ui need a ui specify root!");
+                Debug.LogError("====== LowoUN-UI ===> bubble ui need a ui specify root!");
 
             return go;
         }

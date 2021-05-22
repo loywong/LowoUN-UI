@@ -97,7 +97,7 @@ namespace LowoUN.Module.UI.Com
 
 		private void ResetNewLoadGameObj (GameObject itemGameObj) {
 			if (itemGameObj == null) {
-				Debug.LogError ("====== LowoUI-UN ===> Don't forget to set list item reference with prefab name: " + itemPanelPrefab);
+				Debug.LogError ("====== LowoUN-UI ===> Don't forget to set list item reference with prefab name: " + itemPanelPrefab);
 			}
 			else {
 				Transform itemTrans = itemGameObj.transform;
@@ -119,7 +119,7 @@ namespace LowoUN.Module.UI.Com
 			}
 			else {
 				//#if UNITY_EDITOR
-				//Debug.LogWarning ("====== LowoUI-UN ===> use the item loaded default size.");
+				//Debug.LogWarning ("====== LowoUN-UI ===> use the item loaded default size.");
 				//#endif
 				itemWidth = itemTrans.GetComponent<RectTransform> ().sizeDelta.x;
 				itemHeight = itemTrans.GetComponent<RectTransform> ().sizeDelta.y;
@@ -245,7 +245,7 @@ namespace LowoUN.Module.UI.Com
 				}
 				else {
 					#if UNITY_EDITOR
-					Debug.LogWarning ("====== LowoUI-UN ===> Dont forget add UIHolder for list item!!! on holder with ID: " + hostHolderInsID);
+					Debug.LogWarning ("====== LowoUN-UI ===> Dont forget add UIHolder for list item!!! on holder with ID: " + hostHolderInsID);
 					#endif
 				}
 
@@ -331,7 +331,7 @@ namespace LowoUN.Module.UI.Com
 
 				for (int i = 0; i < itemList.Count && i < gameObjList.Count; i++) {
 					if (gameObjList [i].GetComponent<UIHolder> () == null) {
-						Debug.LogWarning ("====== LowoUI-UN ===> Don't forget to add UIHolder to the list component on the panel with holder id: " + hostHolderInsID);
+						Debug.LogWarning ("====== LowoUN-UI ===> Don't forget to add UIHolder to the list component on the panel with holder id: " + hostHolderInsID);
 					} else {
 						uiholdType = gameObjList [i].GetComponent<UIHolder> ().typeID;
 						uiholdInstanceID = gameObjList [i].GetComponent<UIHolder> ().insID;

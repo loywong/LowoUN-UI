@@ -224,7 +224,7 @@ namespace LowoUN.Module.UI.Com
 				//EditorGUILayout.PropertyField(isStillShow);
 
 
-				//TODO [LowoUI-UN]: arrange items for the static list
+				//TODO [LowoUN-UI]: arrange items for the static list
 //				EditorGUILayout.PropertyField(isArrange4Static);
 //				if(isArrange4Static.boolValue) {
 //					GUILayout.BeginVertical("box");

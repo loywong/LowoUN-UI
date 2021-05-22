@@ -19,7 +19,7 @@ namespace LowoUN.Module.UI
 				//if (_instance == null)
 				//	_instance = new GameObject("UIAdaptScreen").AddComponent<UIAdaptScreen>();
 				if (_instance == null)
-					Debug.LogError ("====== LowoUI-UN ===> don't forget add script 'UIAdaptScreen' !!!");
+					Debug.LogError ("====== LowoUN-UI ===> don't forget add script 'UIAdaptScreen' !!!");
 				
 				return _instance;
 			}
@@ -27,7 +27,7 @@ namespace LowoUN.Module.UI
 
 		void Awake () {
 			if (_instance != null) {
-				Debug.LogError ("====== LowoUI-UN ===> UIAdaptScreen - add to gameobject repeatedly is Forbidden");
+				Debug.LogError ("====== LowoUN-UI ===> UIAdaptScreen - add to gameobject repeatedly is Forbidden");
 			}
 			else {
 				_instance = this;

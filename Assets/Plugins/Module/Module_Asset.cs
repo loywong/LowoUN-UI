@@ -221,7 +221,7 @@ namespace LowoUN.Module.Asset
 				}
 				else if (assetLoadMode == Enum_LoadMode.PersistentDataPath) {
 					#if UNITY_EDITOR
-					Debug.LogError ("====== LowoUI-UN ===> Assets load mode WWW has not been implemented!");
+					Debug.LogError ("====== LowoUN-UI ===> Assets load mode WWW has not been implemented!");
 					#endif
 				}
 
@@ -237,7 +237,7 @@ namespace LowoUN.Module.Asset
 			GameObject prefabRef = GetPrefabRef (prefabName, type);
 			if (prefabRef == null) {
 				#if UNITY_EDITOR
-				Debug.LogError ("====== LowoUI-UN ===> Asset has not been find!" + prefabName);
+				Debug.LogError ("====== LowoUN-UI ===> Asset has not been find!" + prefabName);
 				#endif
 			} 
 			else {
@@ -272,7 +272,7 @@ namespace LowoUN.Module.Asset
 			}
 			else {
 				#if UNITY_EDITOR
-				Debug.LogWarning ("====== LowoUI-UN ===> Instantiate failed with : " + prefabName);
+				Debug.LogWarning ("====== LowoUN-UI ===> Instantiate failed with : " + prefabName);
 				#endif
 			}
 

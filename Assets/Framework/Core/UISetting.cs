@@ -11,7 +11,7 @@ namespace LowoUN.Entry.INI
 		public static UISetting instance {
 			get {
 				if (_instance == null) 
-					Debug.LogWarning ("====== LowoUI-UN ===> no settings GameObject for ui!");
+					Debug.LogWarning ("====== LowoUN-UI ===> no settings GameObject for ui!");
 
 				return _instance;
 			}

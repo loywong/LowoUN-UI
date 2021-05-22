@@ -15,7 +15,7 @@ namespace LowoUN.Module.UI.HUDText
 		public static UIHudText_Damage instance { 
 			get {
 				if (_instance == null) 
-					Debug.LogError ("====== LowoUI-UN ===> UIHudText_Damage has not been initialized!");
+					Debug.LogError ("====== LowoUN-UI ===> UIHudText_Damage has not been initialized!");
 
 				return _instance;
 			}

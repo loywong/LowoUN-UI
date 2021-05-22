@@ -316,7 +316,7 @@ namespace LowoUN.Module.UI.Com
 			if (btnName != null) {
 				btnName.text = name;
 			} else {
-				Debug.LogWarning ("====== LowoUI-UN ===> No button's name text component attached: " + btnObj.name);
+				Debug.LogWarning ("====== LowoUN-UI ===> No button's name text component attached: " + btnObj.name);
 			}
 		}
 	}

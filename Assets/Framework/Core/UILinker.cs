@@ -157,7 +157,7 @@ namespace LowoUN.Module.UI
 		}
 
 		public void ResetUIHolder (UIHolder uiHolder) {
-			//TODO [LowoUI-UN]:set ui Holder Default layout by it's binder!!!
+			//TODO [LowoUN-UI]:set ui Holder Default layout by it's binder!!!
 		}
 
 		private void HandleHolderDelegate(UIHolder holder, bool isAdd) {
@@ -205,7 +205,7 @@ namespace LowoUN.Module.UI
 					return cachePanelAssetDict[p.ToString()].ToArray();
 			}
 
-			Debug.LogWarning("====== LowoUI-UN ===> No such enum element : " + p);
+			Debug.LogWarning("====== LowoUN-UI ===> No such enum element : " + p);
 			return new string[]{""};
 		}
 
@@ -239,7 +239,7 @@ namespace LowoUN.Module.UI
 				}
 			} else {
 				#if UNITY_EDITOR
-				Debug.LogWarningFormat ("====== LowoUI-UN ===> holder id: {0} had been removed !", holderID);
+				Debug.LogWarningFormat ("====== LowoUN-UI ===> holder id: {0} had been removed !", holderID);
 				#endif
 			}
 		}
@@ -447,7 +447,7 @@ namespace LowoUN.Module.UI
         }
 
         public void UpdateLstInfi<T>(int holderID, int objID, List<T> listInfo) {
-			//TODO [LowoUI-UN]: implement the infinite list
+			//TODO [LowoUN-UI]: implement the infinite list
 			//uiHolderDict[holderID].SetListCon(objID, listInfo??new List<T>());
 			//UpdateStateEff (holderID, objID, UIStateType.ValueChange);
 		}
@@ -497,7 +497,7 @@ namespace LowoUN.Module.UI
 					cachePanelClassDict [field.Name] = ((UIPrefabDesc)objs [0]).prefabClass;
 				} else {
 					#if UNITY_EDITOR
-					Debug.Log("====== LowoUI-UN ===> no panel found for UIPanelType: " + field.Name + " when Cache Panel Asset!");
+					Debug.Log("====== LowoUN-UI ===> no panel found for UIPanelType: " + field.Name + " when Cache Panel Asset!");
 					#endif
 				}
             }

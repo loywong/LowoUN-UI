@@ -68,7 +68,7 @@ namespace LowoUN.Module.UI.Com
 
 
 				if (itemGameObj == null) {
-					Debug.LogError ("====== LowoUI-UN ===> doesn't find the prefab with name: " + itemPanelPrefab);
+					Debug.LogError ("====== LowoUN-UI ===> doesn't find the prefab with name: " + itemPanelPrefab);
 				}
 				else {
 					itemGameObj.name = itemPanelType.ToString();
@@ -108,7 +108,7 @@ namespace LowoUN.Module.UI.Com
 				CheckToLoadNewItem ();
 				UpdateItemsInfo (item);
 			} else {
-				Debug.LogWarning ("====== LowoUI-UN ===> son item data exception");
+				Debug.LogWarning ("====== LowoUN-UI ===> son item data exception");
 			}
 
 			return _holderInsID;
@@ -120,14 +120,14 @@ namespace LowoUN.Module.UI.Com
 		{
 			if (gameObjList != null && gameObjList.Count > 0) {
 				if (gameObjList [0].GetComponent<UIHolder> () == null) {
-					Debug.LogWarning ("====== LowoUI-UN ===> Don't forget to add UIHolder component to the list item game object.");
+					Debug.LogWarning ("====== LowoUN-UI ===> Don't forget to add UIHolder component to the list item game object.");
 				} else {
 					uiholdType = gameObjList [0].GetComponent<UIHolder> ().typeID;
 					uiholdInstanceID = gameObjList [0].GetComponent<UIHolder> ().insID;
 					UILinker.instance.SetHolderItemInfo (uiholdType, uiholdInstanceID, item);
 				}
 			} else {
-				Debug.LogWarning ("====== LowoUI-UN ===> no gameObj for son item.");
+				Debug.LogWarning ("====== LowoUN-UI ===> no gameObj for son item.");
 			}
 		}
 	}

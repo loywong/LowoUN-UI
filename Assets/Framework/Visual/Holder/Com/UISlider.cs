@@ -15,7 +15,7 @@ namespace LowoUN.Module.UI.Com
 			_slider = GetComponent<Slider>();
 			#if UNITY_EDITOR
 			if(_slider == null){
-				Debug.LogError ("======= LowoUI-UN ===> Don't forget to set slider component reference!");
+				Debug.LogError ("======= LowoUN-UI ===> Don't forget to set slider component reference!");
 			}
 			#endif
 
@@ -25,7 +25,7 @@ namespace LowoUN.Module.UI.Com
 		//private readonly float beginRate = 0.2f; 
 		private void OnAction(float value){
 			#if UNITY_EDITOR
-			Debug.Log("====== LowoUI-UN ===> onCallEvent : UISlider" + value);
+			Debug.Log("====== LowoUN-UI ===> onCallEvent : UISlider" + value);
 			#endif
 
 //			float fakeVal = 0f;

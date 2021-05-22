@@ -15,7 +15,7 @@ namespace LowoUN.Module.UI
 
 		public static void Play (GameObject obj, AnimationClip animClip) {
 			if (animClip == null) {
-				Debug.LogWarning ("====== LowoUI-UN ===> Don't forget to add on a animation clip.");
+				Debug.LogWarning ("====== LowoUN-UI ===> Don't forget to add on a animation clip.");
 			}
 			else {
 				MakeSureAnimClipExist (obj, animClip);
@@ -25,7 +25,7 @@ namespace LowoUN.Module.UI
 
 		public static void StopAtFirstFrame (GameObject obj, AnimationClip animClip) {
 			if (animClip == null) {
-				Debug.LogWarning ("====== LowoUI-UN ===> Don't forget to add on a animation clip.");
+				Debug.LogWarning ("====== LowoUN-UI ===> Don't forget to add on a animation clip.");
 			}
 			else {
 				MakeSureAnimClipExist (obj, animClip);
@@ -35,7 +35,7 @@ namespace LowoUN.Module.UI
 
 		public static void StopAtLastFrame (GameObject obj, AnimationClip animClip) {
 			if (animClip == null) {
-				Debug.LogWarning ("====== LowoUI-UN ===> Don't forget to add on a animation clip.");
+				Debug.LogWarning ("====== LowoUN-UI ===> Don't forget to add on a animation clip.");
 			}
 			else {
 				MakeSureAnimClipExist (obj, animClip);
@@ -83,7 +83,7 @@ namespace LowoUN.Module.UI
 
         public static void Stop(GameObject obj, AnimationClip animClip) {
             if (animClip == null) {
-				Debug.LogWarning("====== LowoUI-UN ===> Don't forget to add on a animation clip.");
+				Debug.LogWarning("====== LowoUN-UI ===> Don't forget to add on a animation clip.");
             }
             else {
                 MakeSureAnimClipExist(obj, animClip);

@@ -2,7 +2,7 @@
 {
 	public static class Format
 	{
-		private static readonly string ui = "====== LowoUI-UN ===> ";
+		private static readonly string ui = "====== LowoUN-UI ===> ";
 		private static readonly string module = "====== LowoUN / Module / ";
 		private static readonly string util = "====== LowoUN / Util";
 

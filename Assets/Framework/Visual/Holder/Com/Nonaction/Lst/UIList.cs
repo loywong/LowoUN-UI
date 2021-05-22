@@ -278,7 +278,7 @@ namespace LowoUN.Module.UI.Com
 
 		private void ResetNewLoadGameObj (GameObject itemGameObj) {
 			if (itemGameObj == null) {
-				Debug.LogError ("====== LowoUI-UN ===> Don't forget to set list item reference with prefab name: " + itemPanelPrefab);
+				Debug.LogError ("====== LowoUN-UI ===> Don't forget to set list item reference with prefab name: " + itemPanelPrefab);
 			}
 			else {
 				Transform itemTrans = itemGameObj.transform;
@@ -300,7 +300,7 @@ namespace LowoUN.Module.UI.Com
 			}
 			else {
 				//#if UNITY_EDITOR
-				//Debug.LogWarning ("====== LowoUI-UN ===> use the item loaded default size.");
+				//Debug.LogWarning ("====== LowoUN-UI ===> use the item loaded default size.");
 				//#endif
 				itemWidth = itemTrans.GetComponent<RectTransform> ().sizeDelta.x;
 				itemHeight = itemTrans.GetComponent<RectTransform> ().sizeDelta.y;
@@ -495,13 +495,13 @@ namespace LowoUN.Module.UI.Com
 			if (isDynamic) {
 				if (isV && columns == 0) {
 					#if UNITY_EDITOR
-					Debug.LogWarning ("====== LowoUI-UN ===> columns value can't be 0! for the list of holder: " + hostHolderInsID);
+					Debug.LogWarning ("====== LowoUN-UI ===> columns value can't be 0! for the list of holder: " + hostHolderInsID);
 					#endif
 					columns = 1;
 				}
 				if (isU && rows == 0) {
 					#if UNITY_EDITOR
-					Debug.LogWarning ("====== LowoUI-UN ===> rows value can't be 0! for the list of holder: " + hostHolderInsID);
+					Debug.LogWarning ("====== LowoUN-UI ===> rows value can't be 0! for the list of holder: " + hostHolderInsID);
 					#endif
 					rows = 1;
 				}
@@ -535,7 +535,7 @@ namespace LowoUN.Module.UI.Com
                 }
                 else {
 					#if UNITY_EDITOR
-					Debug.LogWarning ("====== LowoUI ===> Dont forget add UIHolder for list item!!! on holder with ID: " + hostHolderInsID);
+					Debug.LogWarning ("====== LowoUN-UI ===> Dont forget add UIHolder for list item!!! on holder with ID: " + hostHolderInsID);
 					#endif
 				}
 
@@ -615,7 +615,7 @@ namespace LowoUN.Module.UI.Com
 			//	_realShowItemCount = Mathf.Min(_infoCount, gameObjList.Count);
 			//	if (gameObjList.Count < _infoCount) {
 			//		#if UNITY_EDITOR
-			//		Debug.LogWarning ("====== LowoUI-UN ===> no enough item containers for the static list!");
+			//		Debug.LogWarning ("====== LowoUN-UI ===> no enough item containers for the static list!");
 			//		#endif
 			//	}
 			//}
@@ -825,7 +825,7 @@ namespace LowoUN.Module.UI.Com
 					//ToggleItemVisibility (gameObjList [i], true);
 
 					if (gameObjList [i].GetComponent<UIHolder> () == null) {
-						Debug.LogWarning ("====== LowoUI-UN ===> Don't forget to add UIHolder to the list component on the panel with holder id: " + hostHolderInsID);
+						Debug.LogWarning ("====== LowoUN-UI ===> Don't forget to add UIHolder to the list component on the panel with holder id: " + hostHolderInsID);
 					} else {
 						uiholdType = gameObjList [i].GetComponent<UIHolder> ().typeID;
 						uiholdInstanceID = gameObjList [i].GetComponent<UIHolder> ().insID;
@@ -841,7 +841,7 @@ namespace LowoUN.Module.UI.Com
 		private int _curShowMinIdx = 0;
 		private void Next(GameObject go)
 		{
-			Debug.Log ("====== LowoUI-UN ===> list press btnNext: " + go.name);
+			Debug.Log ("====== LowoUN-UI ===> list press btnNext: " + go.name);
 
             if (transform.GetComponent<RectTransform>().anchoredPosition.x <=scrollView.GetComponent<RectTransform>().sizeDelta.x - _realShowItemCount * itemWidth+ itemWidth)
                 return;
@@ -852,7 +852,7 @@ namespace LowoUN.Module.UI.Com
 		}
 		private void Prev(GameObject go)
 		{
-			Debug.Log ("====== LowoUI-UN ===> list press btnPrev: " + go.name);
+			Debug.Log ("====== LowoUN-UI ===> list press btnPrev: " + go.name);
             if (transform.GetComponent<RectTransform>().anchoredPosition.x>= 0)
                 return;
 			_curShowMinIdx --;

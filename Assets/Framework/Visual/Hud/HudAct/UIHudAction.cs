@@ -15,7 +15,7 @@ namespace LowoUN.Module.UI.HudAction
 				//		_instance = new GameObject("UIActionEffect").AddComponent<UIHudAction>();
 				//}
 				if (_instance == null) 
-					Debug.LogError ("====== LowoUI-UN ===> no ui hud act util found !");
+					Debug.LogError ("====== LowoUN-UI ===> no ui hud act util found !");
 				
 				return _instance;
 			}

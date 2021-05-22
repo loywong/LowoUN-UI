@@ -29,13 +29,13 @@ namespace LowoUN.Module.UI.Com
 			if (isUseSlider) {
 				if (progBar_Slider == null) {
 					#if UNITY_EDITOR
-					Debug.LogWarning (" ====== LowoUI-UN ===> Don't forget to set progerss bar _ Slider Type!");
+					Debug.LogWarning (" ====== LowoUN-UI ===> Don't forget to set progerss bar _ Slider Type!");
 					#endif
 				}
 			} else {
 				if (progBar_Img == null) {
 					#if UNITY_EDITOR
-					Debug.LogWarning ("  ====== LowoUI-UN ===> Don't forget to set progerss bar _ Imgae Type!");
+					Debug.LogWarning ("  ====== LowoUN-UI ===> Don't forget to set progerss bar _ Imgae Type!");
 					#endif
 				}
 				else{
@@ -63,7 +63,7 @@ namespace LowoUN.Module.UI.Com
 			float rate;
 			if (max == 0) {
 				#if UNITY_EDITOR
-				Debug.LogWarning("====== LowoUI-UN ===> [progress bar] max value should not be 0 !!! ");
+				Debug.LogWarning("====== LowoUN-UI ===> [progress bar] max value should not be 0 !!! ");
 				#endif
 				cur = 0;
 				rate = 0;

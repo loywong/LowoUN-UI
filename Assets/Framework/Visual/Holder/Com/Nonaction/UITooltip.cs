@@ -45,7 +45,7 @@ namespace LowoUN.Module.UI.Com
 
 		// Update is called once per frame
 		void Update () {
-			//TODO [LowoUI-UN]: timer for short/long press operation
+			//TODO [LowoUN-UI]: timer for short/long press operation
 		}
 	}
 }

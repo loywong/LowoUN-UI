@@ -73,7 +73,7 @@ namespace LowoUN.Module.UI.Com
 		{
 			for (int i = 0; i < _actionObjList.Count; i++) {
 				if (_actionObjList [i] == null) {
-					Debug.LogError ("====== LowoUI-UN ===> _actionObjList is null!");
+					Debug.LogError ("====== LowoUN-UI ===> _actionObjList is null!");
 					continue;
 				}
 				if (_actionObjList [i].GetComponent<UIActionBase> () == null) {
@@ -82,7 +82,7 @@ namespace LowoUN.Module.UI.Com
 						//------------------------------
 						isSwapEnable = true;
 						if (_dragItemCon == null)
-							Debug.LogWarning ("====== LowoUI-UN ===> No containter for dragged item!");
+							Debug.LogWarning ("====== LowoUN-UI ===> No containter for dragged item!");
 						_actionObjList [i].GetComponent<UIActionGetter> ()._dragItemCon = _dragItemCon;
 						//------------------------------
 
@@ -90,8 +90,8 @@ namespace LowoUN.Module.UI.Com
 						_actionObjList [i].GetComponent<UIActionGetter> ().currHolderInsID = hostHolderInsID;
 						_actionObjList [i].GetComponent<UIActionGetter> ().onCallEvent = OnSelectTab;
 					} else {
-						//Debug.LogWarning ($"====== LowoUI-UN ===> Don't forget to operate callback script on ui group component with id: {currEventID}, on holder panel: {hostHolderInsID}");
-						Debug.LogWarning (string.Format("====== LowoUI-UN ===> Don't forget to operate callback script on ui group component with id: {0}, on holder panel: {1}", curEventID,hostHolderInsID));
+						//Debug.LogWarning ($"====== LowoUN-UI ===> Don't forget to operate callback script on ui group component with id: {currEventID}, on holder panel: {hostHolderInsID}");
+						Debug.LogWarning (string.Format("====== LowoUN-UI ===> Don't forget to operate callback script on ui group component with id: {0}, on holder panel: {1}", curEventID,hostHolderInsID));
 					}
 				}
 				else {
@@ -107,7 +107,7 @@ namespace LowoUN.Module.UI.Com
 
 		private void OnSelectTab(int tempIdxID, params object[] arr) {
 			//Debug.Log ("OnSelectTab, tab_idx: " + tempIdxID);
-			//Debug.Log ("====== LowoUI-UN / UIGroup ===> OnSelectTab, arr length: " + arr.Length);
+			//Debug.Log ("====== LowoUN-UI / UIGroup ===> OnSelectTab, arr length: " + arr.Length);
 			//Debug.Log ("OnSelectTab, (int)arr[0]: " + (int)arr[0]);//panel holder id
 			//Debug.Log ("OnSelectTab, (int)arr[1]: " + (int)arr[1]);//???
 
@@ -221,12 +221,12 @@ namespace LowoUN.Module.UI.Com
 //		[UIActionAtt ((int)Evts_Test.Group_Test, UIPanelType.Test)]
 //		public void Group_Test (params object[] arr)
 //		{
-//			UnityEngine.Debug.LogWarning (" ====== LowoUI-UN ===> Group_Test: " + arr.Length);
+//			UnityEngine.Debug.LogWarning (" ====== LowoUN-UI ===> Group_Test: " + arr.Length);
 //
 //			if (arr.Length >= 3) {
-//				UnityEngine.Debug.LogWarning (" ====== LowoUI-UN ===> Group_Test 0: " + (int)arr[1]);
-//				UnityEngine.Debug.LogWarning (" ====== LowoUI-UN ===> Group_Test 1: " + (int)arr[0]);
-//				UnityEngine.Debug.LogWarning (" ====== LowoUI-UN ===> Group_Test 2: " + (int)arr[2]);
+//				UnityEngine.Debug.LogWarning (" ====== LowoUN-UI ===> Group_Test 0: " + (int)arr[1]);
+//				UnityEngine.Debug.LogWarning (" ====== LowoUN-UI ===> Group_Test 1: " + (int)arr[0]);
+//				UnityEngine.Debug.LogWarning (" ====== LowoUN-UI ===> Group_Test 2: " + (int)arr[2]);
 //
 //				//UIHub.instance.GetBinder<UIBinderTest> ((int)arr [0]).SwapActorsSequence ((UIActionType)(int)arr [1], (int)arr [2]);
 //			}

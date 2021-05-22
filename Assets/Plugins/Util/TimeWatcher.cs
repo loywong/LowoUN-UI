@@ -14,7 +14,7 @@ namespace LowoUN.Util
 			get
 			{
 				if (_instance == null) {
-                    Debug.LogWarning("====== LowoUI-UN ===> no TimeWatcher ins found !");
+                    Debug.LogWarning("====== LowoUN-UI ===> no TimeWatcher ins found !");
                     _instance = new GameObject("TimeWatcher").AddComponent<TimeWatcher>();
                 }
 

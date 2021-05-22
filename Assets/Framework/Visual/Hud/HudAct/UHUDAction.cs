@@ -43,11 +43,11 @@ namespace LowoUN.Module.UI.HudAction
 //			
 //			if (this.CanvasParent == null)
 //				//UGUI.UGUIUtil.CreateCanvas().transform;
-//				Debug.LogWarning("====== LowoUI-UN ===> HUD / Action: Don't forget to set CanvasRoot");
+//				Debug.LogWarning("====== LowoUN-UI ===> HUD / Action: Don't forget to set CanvasRoot");
 //			
 //			if (this.ImagePrefab == null)
 //				//UGUIUtil.CreateImage();
-//				Debug.LogWarning("====== LowoUI-UN ===> HUD / Action: Don't forget to set ImagePrefab");
+//				Debug.LogWarning("====== LowoUN-UI ===> HUD / Action: Don't forget to set ImagePrefab");
 //		}
 
 		public void SetCamera(Camera cam)

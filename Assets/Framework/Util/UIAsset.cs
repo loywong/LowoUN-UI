@@ -120,7 +120,7 @@ namespace LowoUN.Module.UI
 		public static UIAsset instance { 
 			get {
 				if (_instance == null) {
-					Debug.LogError ("====== LowoUI-UN ===> no UIAsset found !");
+					Debug.LogError ("====== LowoUN-UI ===> no UIAsset found !");
 				}
 				return _instance;
 			}
@@ -195,7 +195,7 @@ namespace LowoUN.Module.UI
 				img.sprite = sprite;
 
 				startTime = (double)Time.time - startTime;
-				Debug.Log("====== LowoUI-UN ===> WWW加载图片用时:" + startTime);
+				Debug.Log("====== LowoUN-UI ===> WWW加载图片用时:" + startTime);
 
 				//清理游离资源
 				yield return new WaitForSeconds(0.01f);

@@ -72,7 +72,7 @@ namespace LowoUN.Module.UI.Com
 
 		private void ToggleEffect (bool isSelete) {
 			if (_selectedGo == null) {// || _deselectedGo == null
-				Debug.LogError ("====== LowoUI-UN ===> Don't forget to set seleted flag!" + "obj id: " + curEventID + "/ host holder id: " + hostHolderInsID);
+				Debug.LogError ("====== LowoUN-UI ===> Don't forget to set seleted flag!" + "obj id: " + curEventID + "/ host holder id: " + hostHolderInsID);
 			} 
 			else {
 				UIHub.instance.ToggleItem(_selectedGo, isSelete);

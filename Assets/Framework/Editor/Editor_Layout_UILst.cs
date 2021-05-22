@@ -88,7 +88,7 @@ namespace LowoUN.Module.UI.Com
 							ResetForList (list, type, panelTypeID, curObjListCount, isForceExpanded);
 						} else {
 							#if UNITY_EDITOR
-							Debug.LogWarning ("====== LowoUI-UN ===> no object Names enum defined for the panel type: " + ((UIPanelType)panelTypeID).ToString());
+							Debug.LogWarning ("====== LowoUN-UI ===> no object Names enum defined for the panel type: " + ((UIPanelType)panelTypeID).ToString());
 							#endif
 						}
 					} else if (type == UIHolderListType.EventList) {
@@ -100,7 +100,7 @@ namespace LowoUN.Module.UI.Com
 							ResetForList (list, type, panelTypeID, curEvtListCount, isForceExpanded);
 						} else {
 							#if UNITY_EDITOR
-							Debug.LogWarning ("====== LowoUI-UN ===> no event Names enum defined for the panel type: " + ((UIPanelType)panelTypeID).ToString());
+							Debug.LogWarning ("====== LowoUN-UI ===> no event Names enum defined for the panel type: " + ((UIPanelType)panelTypeID).ToString());
 							#endif
 						}
 					}
@@ -127,7 +127,7 @@ namespace LowoUN.Module.UI.Com
 				//Debug.LogError ("item.type:" + item.enumNames);
 
 				//if (item.FindPropertyRelative ("obj").objectReferenceValue != null)
-				//	Debug.Log ("====== LowoUI-UN ===> list game object:" + item.FindPropertyRelative ("obj").objectReferenceValue.ToString ());
+				//	Debug.Log ("====== LowoUN-UI ===> list game object:" + item.FindPropertyRelative ("obj").objectReferenceValue.ToString ());
 
 				if (type != UIHolderListType.SystemBuildIn) {
 					//if (item.isExpanded) {

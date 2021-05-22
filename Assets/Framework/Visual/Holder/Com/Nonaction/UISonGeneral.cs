@@ -70,7 +70,7 @@ namespace LowoUN.Module.UI.Com
 					//----------------- load item ui -----------------
 
 					if (itemGameObj == null) {
-						Debug.LogError ("====== LowoUI-UN ===> doesn't find the prefab with name: " + _sonPanelPrefab);
+						Debug.LogError ("====== LowoUN-UI ===> doesn't find the prefab with name: " + _sonPanelPrefab);
 					} else {
 						itemGameObj.transform.SetParent (transform);
 						itemGameObj.GetComponent<RectTransform> ().anchoredPosition3D = Vector3.zero;

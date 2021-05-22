@@ -17,7 +17,7 @@ namespace LowoUN.Module.UI.HUDText
 		public static UIHudText_Notify_CacheTwo instance {
 			get {
 				if (_instance == null) 
-					Debug.LogError ("====== LowoUI-UN ===> no UIHudText_CacheTwo ins found !");
+					Debug.LogError ("====== LowoUN-UI ===> no UIHudText_CacheTwo ins found !");
 
 				return _instance;
 			}

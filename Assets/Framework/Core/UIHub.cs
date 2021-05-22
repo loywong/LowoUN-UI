@@ -146,7 +146,7 @@ namespace LowoUN.Module.UI
             }
 			else {
 				#if UNITY_EDITOR
-				Debug.LogWarning("====== LowoUI-UN ===> Doesn't fine ui prefab with the uiPanelType: " + uiPanelType.ToString());
+				Debug.LogWarning("====== LowoUN-UI ===> Doesn't fine ui prefab with the uiPanelType: " + uiPanelType.ToString());
 				#endif
 			}
 
@@ -387,7 +387,7 @@ namespace LowoUN.Module.UI
 				return;
 
 			#if UNITY_EDITOR
-			Debug.Log ("====== LowoUI-UN ===> Load: HolderToppest: " + UIHub.instance.GetHolderToppest ().ToString());
+			Debug.Log ("====== LowoUN-UI ===> Load: HolderToppest: " + UIHub.instance.GetHolderToppest ().ToString());
 			#endif
 			if (UIHub.instance.GetHolderToppest () == UIPanelType.None) 
 				NotifyMgr.Broadcast<bool> ("UI_IsUsingUI", false);
@@ -404,7 +404,7 @@ namespace LowoUN.Module.UI
 				return;
 
 			#if UNITY_EDITOR
-			Debug.Log ("====== LowoUI-UN ===> Unload: HolderToppest: " + UIHub.instance.GetHolderToppest ().ToString());
+			Debug.Log ("====== LowoUN-UI ===> Unload: HolderToppest: " + UIHub.instance.GetHolderToppest ().ToString());
 			#endif
 			if (UIHub.instance.GetHolderToppest () == UIPanelType.None) 
 				NotifyMgr.Broadcast<bool> ("UI_IsUsingUI", false);
