@@ -14,7 +14,7 @@ AssetBundlesAndroid
 [Pp]roperties
 
 .vs
-.vscode
+# .vscode
 
 *.DS_Store
 main.*.obb
