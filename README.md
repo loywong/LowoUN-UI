@@ -1,6 +1,7 @@
 # LownUN-UI
 
-Wiki: http://www.loywong.com/project/LowoUI-UN/wiki/ (It's still under construction)
+Blog: http://www.loywong.com/unity-ui-framework/
+Wiki: http://www.loywong.com/project/LowoUN-UI/wiki/ (It's still under construction)
 
 Based on the Unity version 2017.1.1f1.
 
