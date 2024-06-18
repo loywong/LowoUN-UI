@@ -29,7 +29,7 @@ namespace LowoUN.Business.UI
             base.OnBtnClose();
 
             //LowoUN.Module.UI.UIHub.instance.CloseUI(insID);
-			NotifyMgr.Broadcast<int>("UI_LoadScene", (int)Global.Enum_GameState.Test);
+			NotifyMgr.Broadcast<int>("UI_LoadScene", (int)Enum_GameState.Test);
         }
 
         protected override void OnEnd()

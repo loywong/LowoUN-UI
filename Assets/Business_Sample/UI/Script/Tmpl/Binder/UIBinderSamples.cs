@@ -69,7 +69,7 @@ namespace LowoUN.Business.UI
 					break;
                 case 3:
                     UIHudText_Notify_CacheTwo.instance.ClearAll();
-                    NotifyMgr.Broadcast<int>("UI_LoadScene", (int)Global.Enum_GameState.Login);
+                    NotifyMgr.Broadcast<int>("UI_LoadScene", (int)Enum_GameState.Login);
                     break;
                 default:
                     break;

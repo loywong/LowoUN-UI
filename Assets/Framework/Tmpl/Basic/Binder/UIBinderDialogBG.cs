@@ -1,6 +1,8 @@
-﻿namespace LowoUN.Business.UI 
+﻿using LowoUN.Module.UI;
+
+namespace LowoUN.Business.UI 
 {
-	public class UIBinderDialogBG : LowoUN.Module.UI.UIBinder
+	public class UIBinderDialogBG : UIBinder
 	{
 		public UIBinderDialogBG (int uiPanelType, int instanceID) : base (uiPanelType, instanceID) {
 
@@ -29,7 +31,7 @@
 		public System.Action onTriggerHostPanel;
 
 		public void CloseDialogByDarkBg () {
-			if (!LowoUN.Entry.INI.UISetting.instance.enableCloseByDarkBg)
+			if (!UISetting.instance.enableCloseByDarkBg)
 				return;
 			
 			if (!hasClickBtn) {

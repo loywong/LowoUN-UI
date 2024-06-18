@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LowoUN.Entry.INI
+namespace LowoUN.Module.UI
 {
 	[ExecuteInEditMode]
 	public class UISetting : MonoBehaviour

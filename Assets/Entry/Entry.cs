@@ -11,17 +11,12 @@
 using LowoUN.Business.UI;
 using UnityEngine;
 
-namespace LowoUN.Entry {
+namespace LowoUN {
 	public class Entry : MonoBehaviour {
-		private static Entry _instance;
-		public static Entry instance { get { return _instance; } }
-
-		[SerializeField] private Global.Enum_GameState _startGameState = Global.Enum_GameState.Login;
+		[SerializeField] private Enum_GameState _startGameState = Enum_GameState.Login;
 		[SerializeField] private float _timeSpeed = 1;
 
 		void Awake () {
-			_instance = this;
-
 			InitDebug ();
 		}
 

@@ -14,7 +14,7 @@ namespace LowoUN.Module.UI
 		protected UILogicBase() {
 			var d = UIAsset.instance.GetSceneDefault (); 
 			foreach (var item in d) 
-				sceneDefaultPanels [EnumParse.GetEnumID(item.Key, typeof(Global.Enum_GameState))] = item.Value.ConvertAll<int>(i=>EnumParse.GetEnumID(i, typeof(UIPanelType)));
+				sceneDefaultPanels [EnumParse.GetEnumID(item.Key, typeof(Enum_GameState))] = item.Value.ConvertAll<int>(i=>EnumParse.GetEnumID(i, typeof(UIPanelType)));
 		}
 
 		virtual protected void HandleBasicEvent (bool isAdd){

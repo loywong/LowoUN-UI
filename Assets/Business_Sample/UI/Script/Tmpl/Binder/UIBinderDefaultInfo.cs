@@ -30,7 +30,7 @@
         }
 
         public void UpdateCurScene(int stateid) {
-            curSceneName =  ((Global.Enum_GameState)stateid).ToString();
+            curSceneName =  ((Enum_GameState)stateid).ToString();
         }
     }
 }
