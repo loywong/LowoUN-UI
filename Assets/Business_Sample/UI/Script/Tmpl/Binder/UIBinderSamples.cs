@@ -45,7 +45,7 @@ namespace LowoUN.Business.UI
             switch (idx)
             {
                 case 0:
-                    UIHub.instance.LoadUI(UIPanelType.Coms);
+                    UIHub.instance.LoadUI(UIPanelType.Coms, "UI_Coms");
                     break;
 				case 1:
 					UIHub.instance.LoadCheckDialogUI (
