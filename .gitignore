@@ -22,7 +22,6 @@ patch.*.obb
 Thumbs.db
 Thumbs.db.meta
 
-ProjectSettings
 [Ll]ibrary
 *.pidb
 *.unityproj
@@ -61,7 +60,7 @@ PCBuild
 /Temp
 /[Bb]uild
 /[Bb]uilds
-/ProjectSettings
+# /ProjectSettings
 /*.DotSettings
 /*.csproj.user
 StreamingAssets
@@ -76,3 +75,6 @@ patch.*.obb
 ProjectSettings/ProjectVersion.txt
 Thumbs.db
 Thumbs.db.meta
+
+/[Ll]ogs/
+/UserSettings
