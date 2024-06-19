@@ -9,6 +9,7 @@
  ****************************************************************/
 
 using LowoUN.Business.UI;
+using LowoUN.Util.Notify;
 using UnityEngine;
 
 namespace LowoUN {
@@ -35,7 +36,7 @@ namespace LowoUN {
 			//[3]ui
 			UILogic.instance.OnStart ();
 
-			LowoUN.Util.Notify.NotifyMgr.Broadcast<int> ("UW_LoadScene", (int) _startGameState /*gamestateid*/ );
+			NotifyMgr.Broadcast<int> ("UW_LoadScene", (int) _startGameState /*gamestateid*/ );
 		}
 
 		void Update () {

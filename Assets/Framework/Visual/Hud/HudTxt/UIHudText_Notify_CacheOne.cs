@@ -1,16 +1,14 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using LowoUN.Business.UI;
+using UnityEngine;
 
-namespace LowoUN.Module.UI.HUDText
-{
+namespace LowoUN.Module.UI.HUDText {
 	[ExecuteInEditMode]
-	public class UIHudText_Notify_CacheOne : MonoBehaviour 
-	{
+	public class UIHudText_Notify_CacheOne : MonoBehaviour {
 		private static UIHudText_Notify_CacheOne _instance = null;
 		public static UIHudText_Notify_CacheOne instance {
 			get {
-				if (_instance == null) 
+				if (_instance == null)
 					Debug.LogError ("====== LowoUN-UI ===> no UIHudText_CacheOne ins found !");
 
 				return _instance;
@@ -28,7 +26,6 @@ namespace LowoUN.Module.UI.HUDText
 			_isWork = true;
 		}
 
-
 		public void Setinfo (GameObject go, string des, float time, int sysNotifyType) {
 			UIBinderSystemNotify data = go.GetComponent<UIHolder> ().GetBinder () as UIBinderSystemNotify;
 			data.SetInfo (des, time);
@@ -42,7 +39,7 @@ namespace LowoUN.Module.UI.HUDText
 		public void OnUpdate () {
 			if (_isWork) {
 				if (_goes.Count > 0) {
-					if(_isEnableNext){
+					if (_isEnableNext) {
 						_curGo = _goes.Dequeue ();
 						UIBinderSystemNotify data = _curGo.GetComponent<UIHolder> ().GetBinder () as UIBinderSystemNotify;
 						data.StartShow ();
@@ -50,7 +47,7 @@ namespace LowoUN.Module.UI.HUDText
 						_isEnableNext = false;
 						_timer = 0f;
 					}
-				
+
 					if (_timer >= _INTERVAL)
 						_isEnableNext = true;
 					else

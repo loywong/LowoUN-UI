@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 
-namespace LowoUN.Module.UI 
-{
-	public class UIAnimMoveTrigger: MonoBehaviour {
+namespace LowoUN.Module.UI {
+	public class UIAnimMoveTrigger : MonoBehaviour {
 		public bool trigger = false;
-		void Update()
-		{
+		void Update () {
 			if (trigger) {
 				UIAnimMoveBag.Play (gameObject.GetComponent<RectTransform> ());
 				trigger = false;

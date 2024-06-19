@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace LowoUN.Module.Cameras
-{
-	public class Module_Camera : MonoBehaviour
-	{
-		
+namespace LowoUN.Module.Cameras {
+	public class Module_Camera : MonoBehaviour {
+
 		private static Module_Camera _instance = null;
 		public static Module_Camera instance {
 			get {
 				if (_instance == null) {
-					Debug.LogError("====== LowoUN / Module / Camera ===> hasn't found this module.");
+					Debug.LogError ("====== LowoUN / Module / Camera ===> hasn't found this module.");
 				}
 				return _instance;
 			}
@@ -28,9 +25,9 @@ namespace LowoUN.Module.Cameras
 		}
 
 		Camera _curCamera;
-		Camera curCamera{
-			get{ return _curCamera;}
-			set{ _curCamera = value;}
+		Camera curCamera {
+			get { return _curCamera; }
+			set { _curCamera = value; }
 		}
 	}
 }

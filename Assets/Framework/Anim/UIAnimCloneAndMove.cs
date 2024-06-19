@@ -1,39 +1,32 @@
-﻿using UnityEngine;
-//using UnityEngine.UI;
-using System.Collections.Generic;
-//using GameSystem.ItemSystem;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-namespace LowoUN.Module.UI 
-{
+namespace LowoUN.Module.UI {
 	public class UIAnimMoveBag {
 		public static UIAnimCloneAndMove _instance = null;
-		public static void Play(RectTransform rt)
-		{
+		public static void Play (RectTransform rt) {
 			if (_instance != null) {
-				_instance.AddItem(rt);
+				_instance.AddItem (rt);
 			}
 		}
 	}
-		
-	public class UIAnimCloneAndMove: MonoBehaviour {
+
+	public class UIAnimCloneAndMove : MonoBehaviour {
 		private float speed = 1.0f;
 		public RectTransform ownerRt = null;
-		private List<RectTransform> _curPanelRTs = new List<RectTransform>();
-		private List<RectTransform> _tempRemoveRTs = new List<RectTransform>();
-		void Start()
-		{
+		private List<RectTransform> _curPanelRTs = new List<RectTransform> ();
+		private List<RectTransform> _tempRemoveRTs = new List<RectTransform> ();
+		void Start () {
 			ownerRt = gameObject.GetComponent<RectTransform> ();
 			UIAnimMoveBag._instance = this;
 		}
 
-		public void AddItem(RectTransform rt)
-		{
+		public void AddItem (RectTransform rt) {
 			_curPanelRTs.Add (rt);
 			//rt.SetParent (ownerRt);
 		}
 
-		void Update()
-		{
+		void Update () {
 			_tempRemoveRTs.Clear ();
 			foreach (var o in _curPanelRTs) {
 				if (o != null) {
@@ -50,13 +43,12 @@ namespace LowoUN.Module.UI
 			}
 			foreach (var o in _tempRemoveRTs) {
 				_curPanelRTs.Remove (o);
-				if(o!=null)
-					Destroy(o.gameObject);
+				if (o != null)
+					Destroy (o.gameObject);
 			}
 		}
 
-		void OnGUI()
-		{	
+		void OnGUI () {
 			//GUI.Box (new Rect (Screen.width - 200, 45, 120, 350), "");
 			//if (GUI.Button (new Rect (Screen.width - 190, 100, 100, 40), "Spawn")) {
 			//	foreach(var n in DataStorage.Instance.my_item_info_arr)

@@ -1,21 +1,18 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace LowoUN.Module.UI.Com
-{
-	public static class UIFunc_Lst
-	{
+namespace LowoUN.Module.UI.Com {
+	public static class UIFunc_Lst {
 		public static void CheckPrevNextBtnVisble (
-			GameObject btnNext, 
-			GameObject btnPrev, 
-			GameObject scrollView, 
-			int _realShowItemCount, 
-			float itemWidth, 
-			float itemHeight, 
-			Transform transform, 
-			bool isV, 
+			GameObject btnNext,
+			GameObject btnPrev,
+			GameObject scrollView,
+			int _realShowItemCount,
+			float itemWidth,
+			float itemHeight,
+			Transform transform,
+			bool isV,
 			bool isU
-		){
+		) {
 			if (btnNext == null && btnPrev == null)
 				return;
 
@@ -23,56 +20,49 @@ namespace LowoUN.Module.UI.Com
 				return;
 
 			if (isU) {
-				if (_realShowItemCount * itemWidth <= scrollView.GetComponent<RectTransform>().sizeDelta.x) {
+				if (_realShowItemCount * itemWidth <= scrollView.GetComponent<RectTransform> ().sizeDelta.x) {
 					if (btnNext != null)
-						btnNext.SetActive(false);
+						btnNext.SetActive (false);
 					if (btnPrev != null)
-						btnPrev.SetActive(false);
-				}
-				else {
-					if (transform.GetComponent<RectTransform>().anchoredPosition.x>= 0) {
+						btnPrev.SetActive (false);
+				} else {
+					if (transform.GetComponent<RectTransform> ().anchoredPosition.x >= 0) {
 						if (btnPrev != null)
-							btnPrev.SetActive(false);
-					}
-					else {
+							btnPrev.SetActive (false);
+					} else {
 						if (btnPrev != null)
-							btnPrev.SetActive(true);
+							btnPrev.SetActive (true);
 					}
 
-					if (transform.GetComponent<RectTransform>().anchoredPosition.x <= scrollView.GetComponent<RectTransform>().sizeDelta.x-_realShowItemCount * itemWidth + itemWidth) {
+					if (transform.GetComponent<RectTransform> ().anchoredPosition.x <= scrollView.GetComponent<RectTransform> ().sizeDelta.x - _realShowItemCount * itemWidth + itemWidth) {
 						if (btnNext != null)
-							btnNext.SetActive(false);
-					}
-					else {
+							btnNext.SetActive (false);
+					} else {
 						if (btnNext != null)
-							btnNext.SetActive(true);
+							btnNext.SetActive (true);
 					}
 				}
-			}
-			else if (isV) {
-				if (_realShowItemCount *itemHeight<= scrollView.GetComponent<RectTransform>().sizeDelta.y) {
+			} else if (isV) {
+				if (_realShowItemCount * itemHeight <= scrollView.GetComponent<RectTransform> ().sizeDelta.y) {
 					if (btnNext != null)
-						btnNext.SetActive(false);
+						btnNext.SetActive (false);
 					if (btnPrev != null)
-						btnPrev.SetActive(false);
-				}
-				else {
-					if (transform.GetComponent<RectTransform>().anchoredPosition.y >= 0) {
+						btnPrev.SetActive (false);
+				} else {
+					if (transform.GetComponent<RectTransform> ().anchoredPosition.y >= 0) {
 						if (btnPrev != null)
-							btnPrev.SetActive(false);
-					}
-					else {
+							btnPrev.SetActive (false);
+					} else {
 						if (btnPrev != null)
-							btnPrev.SetActive(true);
+							btnPrev.SetActive (true);
 					}
 
-					if (transform.GetComponent<RectTransform>().anchoredPosition.y<= scrollView.GetComponent<RectTransform>().sizeDelta.y- _realShowItemCount * itemHeight+ itemHeight) {
+					if (transform.GetComponent<RectTransform> ().anchoredPosition.y <= scrollView.GetComponent<RectTransform> ().sizeDelta.y - _realShowItemCount * itemHeight + itemHeight) {
 						if (btnNext != null)
-							btnNext.SetActive(false);
-					}
-					else {
+							btnNext.SetActive (false);
+					} else {
 						if (btnNext != null)
-							btnNext.SetActive(true);
+							btnNext.SetActive (true);
 					}
 				}
 			}

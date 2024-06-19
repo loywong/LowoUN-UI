@@ -1,13 +1,11 @@
 ﻿#pragma warning disable 0649//ignore default value null
+using LowoUN.Module.UI.Com;
+using LowoUN.Util;
 using UnityEngine;
 using UnityEngine.UI;
-using LowoUN.Util;
-using LowoUN.Module.UI.Com;
 
-namespace LowoUN.Module.UI.HUDText
-{
-    public class UText_Bubble : MonoBehaviour, IUTxt
-    {
+namespace LowoUN.Module.UI.HUDText {
+    public class UText_Bubble : MonoBehaviour, IUTxt {
         //public CanvasGroup layoutRoot = null;
         //public Text insText = null;
         public Text tObj = null;
@@ -58,13 +56,11 @@ namespace LowoUN.Module.UI.HUDText
         public System.Action<IUTxt> onAnimComplete;
         private int hashcode;
 
-        void Awake()
-        {
-            hashcode = GetHashCode();
+        void Awake () {
+            hashcode = GetHashCode ();
         }
 
-        public void SetInfo(string info)
-        {
+        public void SetInfo (string info) {
             tObj.color = color;
 
             //tObj.pos = pos;
@@ -74,76 +70,65 @@ namespace LowoUN.Module.UI.HUDText
             //THINKING
             tObj.fontSize = size;
             float temp = size * 1.28f;
-            tObj.rectTransform.sizeDelta = new Vector2(temp * info.Length, temp);
+            tObj.rectTransform.sizeDelta = new Vector2 (temp * info.Length, temp);
 
             tObj.text = info;
 
             if (anim != null)
-                UIAnimPlayer.Play(gameObject, anim);
+                UIAnimPlayer.Play (gameObject, anim);
         }
 
-        public void CompleteAnim()
-        {
+        public void CompleteAnim () {
             if (onAnimComplete != null)
-                onAnimComplete(this);
+                onAnimComplete (this);
         }
 
         ///////////////////////////////////////// Bubble //////////////////////////////////////////////
-        public void ShowBubble()
-        {
-            if (TimeWatcher.instance.ContainKey("UI_HUD_Bubble_DelayClose" + hashcode))
-                TimeWatcher.instance.RemoveWatcher("UI_HUD_Bubble_DelayClose" + hashcode);
-            if (TimeWatcher.instance.ContainKey("UI_HUD_Bubble_Close" + hashcode))
-                TimeWatcher.instance.RemoveWatcher("UI_HUD_Bubble_Close" + hashcode);
+        public void ShowBubble () {
+            if (TimeWatcher.instance.ContainKey ("UI_HUD_Bubble_DelayClose" + hashcode))
+                TimeWatcher.instance.RemoveWatcher ("UI_HUD_Bubble_DelayClose" + hashcode);
+            if (TimeWatcher.instance.ContainKey ("UI_HUD_Bubble_Close" + hashcode))
+                TimeWatcher.instance.RemoveWatcher ("UI_HUD_Bubble_Close" + hashcode);
 
             if (anim_Open_Bubble != null)
-                UIAnimPlayer.Play(gameObject, anim_Open_Bubble);
+                UIAnimPlayer.Play (gameObject, anim_Open_Bubble);
         }
-        public void HideBubble()
-        {
+        public void HideBubble () {
 
-            if (Time.timeScale != 1)
-            {
-                gameObject.SetActive(false);
-            }
-            else
-            {
-                if (TimeWatcher.instance.ContainKey("UI_HUD_Bubble_Close" + hashcode))
-                    TimeWatcher.instance.RemoveWatcher("UI_HUD_Bubble_Close" + hashcode);
-                if (TimeWatcher.instance.ContainKey("UI_HUD_Bubble_DelayClose" + hashcode))
-                    TimeWatcher.instance.RemoveWatcher("UI_HUD_Bubble_DelayClose" + hashcode);
+            if (Time.timeScale != 1) {
+                gameObject.SetActive (false);
+            } else {
+                if (TimeWatcher.instance.ContainKey ("UI_HUD_Bubble_Close" + hashcode))
+                    TimeWatcher.instance.RemoveWatcher ("UI_HUD_Bubble_Close" + hashcode);
+                if (TimeWatcher.instance.ContainKey ("UI_HUD_Bubble_DelayClose" + hashcode))
+                    TimeWatcher.instance.RemoveWatcher ("UI_HUD_Bubble_DelayClose" + hashcode);
 
-                TimeWatcher.instance.AddWatcher("UI_HUD_Bubble_DelayClose" + hashcode, (uint)(0.1f/*Module_Bubble.instance.delayToFadeout*/ * 1000), false, () => {
-                    TimeWatcher.instance.RemoveWatcher("UI_HUD_Bubble_DelayClose" + hashcode);
+                TimeWatcher.instance.AddWatcher ("UI_HUD_Bubble_DelayClose" + hashcode, (uint) (0.1f /*Module_Bubble.instance.delayToFadeout*/ * 1000), false, () => {
+                    TimeWatcher.instance.RemoveWatcher ("UI_HUD_Bubble_DelayClose" + hashcode);
 
-                    if (this != null)
-                    {
-                        if (gameObject != null)
-                        {
+                    if (this != null) {
+                        if (gameObject != null) {
 
-                            if (anim_Close_Bubble != null)
-                            {
-                                UIAnimPlayer.Play(gameObject, anim_Close_Bubble);
+                            if (anim_Close_Bubble != null) {
+                                UIAnimPlayer.Play (gameObject, anim_Close_Bubble);
 
-                                TimeWatcher.instance.AddWatcher("UI_HUD_Bubble_Close" + hashcode, (uint)(0.2/*Module_Bubble.instance.fadeoutAnimTime*/ * 1000), false, () => {
-                                    TimeWatcher.instance.RemoveWatcher("UI_HUD_Bubble_Close" + hashcode);
+                                TimeWatcher.instance.AddWatcher ("UI_HUD_Bubble_Close" + hashcode, (uint) (0.2 /*Module_Bubble.instance.fadeoutAnimTime*/ * 1000), false, () => {
+                                    TimeWatcher.instance.RemoveWatcher ("UI_HUD_Bubble_Close" + hashcode);
 
-                                    gameObject.SetActive(false);
+                                    gameObject.SetActive (false);
                                 });
-                            }
-                            else
-                                gameObject.SetActive(false);
+                            } else
+                                gameObject.SetActive (false);
                         }
                     }
                 });
             }
         }
 
-        public void Init_Bubble(string text)
-        {
+        public void Init_Bubble (string text) {
             tObj.text = text;
-            Vector2 txtSize = tObj.GetComponent<RectTransform>().sizeDelta;
-            imgObj.GetComponent<RectTransform>().sizeDelta = new Vector2(txtSize.x + 30f, tObj.preferredHeight + 25f);
+            Vector2 txtSize = tObj.GetComponent<RectTransform> ().sizeDelta;
+            imgObj.GetComponent<RectTransform> ().sizeDelta = new Vector2 (txtSize.x + 30f, tObj.preferredHeight + 25f);
         }
     }
 }

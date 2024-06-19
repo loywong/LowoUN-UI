@@ -1,22 +1,17 @@
 ﻿#pragma warning disable 0649//ignore default value null
-using UnityEngine;
-using UnityEngine.UI;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using LowoUN.Business.UI;
-using LowoUN.Util.Log;
+using UnityEngine;
 
-namespace LowoUN.Module.UI.Com
-{
-	public class UILst_Mid : UIActionBase, ILst
-	{
-		#if UNITY_EDITOR
+namespace LowoUN.Module.UI.Com {
+	public class UILst_Mid : UIActionBase, ILst {
+#if UNITY_EDITOR
 		[SerializeField]
 		private UIPanelClass classID;
-		#endif
+#endif
 		[SerializeField]
-		private string       typeIdx = UIPanelType.None.ToString();
+		private string typeIdx = UIPanelType.None.ToString ();
 
 		[SerializeField]
 		private UIPanelType itemPanelType;
@@ -26,13 +21,13 @@ namespace LowoUN.Module.UI.Com
 		//regular position for dynamic loaded items ----------------------
 		[SerializeField]
 		private bool isU;
-//		[SerializeField]
+		//		[SerializeField]
 		private float rows = 1f;
 		[SerializeField]
 		private float uOffset;
 		[SerializeField]
 		private bool isV;
-//		[SerializeField]
+		//		[SerializeField]
 		private float columns = 1f;
 		[SerializeField]
 		private float vOffset;
@@ -41,54 +36,51 @@ namespace LowoUN.Module.UI.Com
 		[SerializeField]
 		private float itemHeight = -1;
 
-//		[SerializeField]
-//		private bool isUCenterAlign = true;//!!!!!! use UICom_LstUVCenter //特例：1，为水平单行定制；2，以宽度中心为原点，两侧对其排列
+		//		[SerializeField]
+		//		private bool isUCenterAlign = true;//!!!!!! use UICom_LstUVCenter //特例：1，为水平单行定制；2，以宽度中心为原点，两侧对其排列
 
 		private RectTransform rt;
 		private Vector2 rtOriginSize;
-		private List<GameObject> gameObjList = new List<GameObject>();
+		private List<GameObject> gameObjList = new List<GameObject> ();
 
 		// Use this for initialization
 		void Awake () {
 			CheckRectTransform ();
 		}
 
-		private void CheckRectTransform ()
-		{
-			if (rt == null) 
+		private void CheckRectTransform () {
+			if (rt == null)
 				rt = GetComponent<RectTransform> ();
-			
+
 			rtOriginSize = rt.sizeDelta;
 		}
 
-		void Update () {
-		}
+		void Update () { }
 
 		private void CheckToLoadNewItems (int tempLength, int newListCount) {
-			if(newListCount > tempLength) {
+			if (newListCount > tempLength) {
 				for (int i = tempLength; i < newListCount; i++) {
 					GameObject itemGameObj = null;
 
 					//----------------- load item ui -----------------
 					//GameObject itemGameObj = UIHandler.instance.LoadUI(itemType.GetComponent<UIHolder>().typeID) as GameObject;
 					//GameObject itemGameObj = UIHandler.instance.LoadUI(itemPanelType) as GameObject;
-					if (!string.IsNullOrEmpty(itemPanelPrefab)) {
+					if (!string.IsNullOrEmpty (itemPanelPrefab)) {
 						bool match = false;
-						foreach( string name in UILinker.instance.GetPrefabNames(itemPanelType)) {
-							if (string.Equals(itemPanelPrefab, name, StringComparison.OrdinalIgnoreCase))
+						foreach (string name in UILinker.instance.GetPrefabNames (itemPanelType)) {
+							if (string.Equals (itemPanelPrefab, name, StringComparison.OrdinalIgnoreCase))
 								match = true;
 						}
 						if (match)
-							itemGameObj = UILinker.instance.LoadUI4ChildHolder(itemPanelPrefab) as GameObject;//, false, Enum_UIAsset.Son
+							itemGameObj = UILinker.instance.LoadUI4ChildHolder (itemPanelPrefab) as GameObject; //, false, Enum_UIAsset.Son
 						else
-							itemGameObj = UILinker.instance.LoadUI4ChildHolder(itemPanelType) as GameObject;//, Enum_UIAsset.Son
-					}
-					else
-						itemGameObj = UILinker.instance.LoadUI4ChildHolder(itemPanelType) as GameObject;//, Enum_UIAsset.Son
+							itemGameObj = UILinker.instance.LoadUI4ChildHolder (itemPanelType) as GameObject; //, Enum_UIAsset.Son
+					} else
+						itemGameObj = UILinker.instance.LoadUI4ChildHolder (itemPanelType) as GameObject; //, Enum_UIAsset.Son
 					//----------------- load item ui -----------------
 
-					if(itemGameObj != null)
-						itemGameObj.name = itemPanelType.ToString() + i;
+					if (itemGameObj != null)
+						itemGameObj.name = itemPanelType.ToString () + i;
 
 					ResetNewLoadGameObj (itemGameObj);
 				}
@@ -98,8 +90,7 @@ namespace LowoUN.Module.UI.Com
 		private void ResetNewLoadGameObj (GameObject itemGameObj) {
 			if (itemGameObj == null) {
 				Debug.LogError ("====== LowoUN-UI ===> Don't forget to set list item reference with prefab name: " + itemPanelPrefab);
-			}
-			else {
+			} else {
 				Transform itemTrans = itemGameObj.transform;
 				itemTrans.SetParent (transform);
 
@@ -112,12 +103,10 @@ namespace LowoUN.Module.UI.Com
 			}
 		}
 
-		private void InitNewLoadGameObjSize (Transform itemTrans)
-		{
+		private void InitNewLoadGameObjSize (Transform itemTrans) {
 			if (itemWidth > 0f && itemHeight > 0f) {
 				itemTrans.GetComponent<RectTransform> ().sizeDelta = new Vector2 (itemWidth, itemHeight);
-			}
-			else {
+			} else {
 				//#if UNITY_EDITOR
 				//Debug.LogWarning ("====== LowoUN-UI ===> use the item loaded default size.");
 				//#endif
@@ -133,8 +122,8 @@ namespace LowoUN.Module.UI.Com
 		private float interval4Anim = 0.2f;
 		[SerializeField]
 		private float delay4Anim = 0.0f;
-//		[SerializeField]
-//		private int group4Anim = 0;
+		//		[SerializeField]
+		//		private int group4Anim = 0;
 
 		private UIStateAnimator stateAnimator;
 		private void ArrangeItems () {
@@ -148,57 +137,54 @@ namespace LowoUN.Module.UI.Com
 			/// play item animation by order.
 			//1,set delay time
 			for (int i = 0; i < gameObjList.Count; i++) {
-				stateAnimator = gameObjList [i].GetComponent<UIStateAnimator> ();
+				stateAnimator = gameObjList[i].GetComponent<UIStateAnimator> ();
 				if (stateAnimator != null) {
 					//stateAnimator.current_group_filter = group4Anim;
-					stateAnimator.SetStateParams (UIStateType.Open, delay4Anim + interval4Anim * (float)i + Time.deltaTime/*HACK: delay for one frame time*/);
+					stateAnimator.SetStateParams (UIStateType.Open, delay4Anim + interval4Anim * (float) i + Time.deltaTime /*HACK: delay for one frame time*/ );
 
 					//2,update anim state: open
-					gameObjList [i].GetComponent<UIHolder> ().OnOpen ();
+					gameObjList[i].GetComponent<UIHolder> ().OnOpen ();
 				}
 			}
 		}
-
 
 		float x;
 		float y;
 		private void ArrangeItem (Transform itemT, int idx) {
 			if (isU) {
-//				if (isUCenterAlign) {
-					float w = rt.sizeDelta.x;
-					if (_realShowItemCount % 2 == 0) {
-						//rt.sizeDelta
-						if(idx <_realShowItemCount / 2)
-							x = w/2 - (itemWidth/2 + (_realShowItemCount/2 - idx - 1)* itemWidth) - uOffset * (_realShowItemCount / 2 - idx);
-						else
-							x = w/2 + (itemWidth/2 + (idx - _realShowItemCount/2)* itemWidth) + uOffset * (idx - _realShowItemCount / 2);
-					}
-					else{
-						if((float)idx < (float)_realShowItemCount / 2f)
-							x = w/2 - (_realShowItemCount/2 - idx)* itemWidth - uOffset * (_realShowItemCount / 2 - idx);
-						else
-							x = w/2 + (idx - _realShowItemCount/2)* itemWidth + uOffset * (idx - _realShowItemCount / 2);
-					}
-//				}
-//				else {
-//					//x = offsetEdge.x + (itemWidth + uOffset) * Mathf.Floor (idx / rows) + itemWidth / 2;
-//					x = (itemWidth + uOffset) * Mathf.Floor (idx / rows) + itemWidth / 2;
-//				}
+				//				if (isUCenterAlign) {
+				float w = rt.sizeDelta.x;
+				if (_realShowItemCount % 2 == 0) {
+					//rt.sizeDelta
+					if (idx < _realShowItemCount / 2)
+						x = w / 2 - (itemWidth / 2 + (_realShowItemCount / 2 - idx - 1) * itemWidth) - uOffset * (_realShowItemCount / 2 - idx);
+					else
+						x = w / 2 + (itemWidth / 2 + (idx - _realShowItemCount / 2) * itemWidth) + uOffset * (idx - _realShowItemCount / 2);
+				} else {
+					if ((float) idx < (float) _realShowItemCount / 2f)
+						x = w / 2 - (_realShowItemCount / 2 - idx) * itemWidth - uOffset * (_realShowItemCount / 2 - idx);
+					else
+						x = w / 2 + (idx - _realShowItemCount / 2) * itemWidth + uOffset * (idx - _realShowItemCount / 2);
+				}
+				//				}
+				//				else {
+				//					//x = offsetEdge.x + (itemWidth + uOffset) * Mathf.Floor (idx / rows) + itemWidth / 2;
+				//					x = (itemWidth + uOffset) * Mathf.Floor (idx / rows) + itemWidth / 2;
+				//				}
 
-				float spaceY = (rtOriginSize.y - itemHeight * rows)/(rows + 1);
-				y = -(spaceY * (idx % rows + 1) + (idx % rows) * itemHeight + itemHeight / 2);// + rtOriginSize.y / 2;
-			} 
-			else if (isV) {
+				float spaceY = (rtOriginSize.y - itemHeight * rows) / (rows + 1);
+				y = -(spaceY * (idx % rows + 1) + (idx % rows) * itemHeight + itemHeight / 2); // + rtOriginSize.y / 2;
+			} else if (isV) {
 				float spaceX = (rtOriginSize.x - itemWidth * columns) / (columns + 1);
-				x = spaceX * (idx % columns + 1) + (idx % columns) * itemWidth + itemWidth / 2;// - rtOriginSize.x / 2;
+				x = spaceX * (idx % columns + 1) + (idx % columns) * itemWidth + itemWidth / 2; // - rtOriginSize.x / 2;
 				//y = -offsetEdge.y - (itemHeight+vOffset) * Mathf.Floor (idx / columns) - itemHeight / 2;
-				y = - (itemHeight+vOffset) * Mathf.Floor (idx / columns) - itemHeight / 2;
+				y = -(itemHeight + vOffset) * Mathf.Floor (idx / columns) - itemHeight / 2;
 			}
 
-			itemT.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
+			itemT.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (x, y);
 		}
 
-		private void OnClickFromItem(int tempUIEventID, params object[] arr) {
+		private void OnClickFromItem (int tempUIEventID, params object[] arr) {
 			UpdateItemSelectedState (tempUIEventID);
 
 			//if(onCallEvent != null)
@@ -215,38 +201,35 @@ namespace LowoUN.Module.UI.Com
 		//show selected flag
 		private void UpdateItemSelectedState (int idxIdInList) {
 			SetAllGoDeselected ();
-			idxIdInList = Mathf.Min (idxIdInList, _realShowItemCount-1);
-			if(idxIdInList >= 0 && idxIdInList < gameObjList.Count)
-			{
-				UIStateVisual v = gameObjList [idxIdInList].GetComponent<UIStateVisual> ();
-				if(v != null)// && v.isActiveAndEnabled
-					v.SetState(UIStateType.Selected);
+			idxIdInList = Mathf.Min (idxIdInList, _realShowItemCount - 1);
+			if (idxIdInList >= 0 && idxIdInList < gameObjList.Count) {
+				UIStateVisual v = gameObjList[idxIdInList].GetComponent<UIStateVisual> ();
+				if (v != null) // && v.isActiveAndEnabled
+					v.SetState (UIStateType.Selected);
 			}
 		}
-		private void SetAllGoDeselected(){
+		private void SetAllGoDeselected () {
 			if (_realShowItemCount > 0) {
-				for (int i = 0; i < Mathf.Min(_realShowItemCount,gameObjList.Count); i++) {
-					UIStateVisual v = gameObjList [i].GetComponent<UIStateVisual> ();
-					if(v != null)// && v.isActiveAndEnabled
-						v.SetState(UIStateType.Deselected);
+				for (int i = 0; i < Mathf.Min (_realShowItemCount, gameObjList.Count); i++) {
+					UIStateVisual v = gameObjList[i].GetComponent<UIStateVisual> ();
+					if (v != null) // && v.isActiveAndEnabled
+						v.SetState (UIStateType.Deselected);
 				}
 			}
 		}
 
-		private void InitAllGameObjsAction ()
-		{
+		private void InitAllGameObjsAction () {
 			//for (int i = 0; i < gameObjList.Count; i++) {
-			for (int i = 0; i < Mathf.Min(_realShowItemCount,gameObjList.Count); i++) {
-				if (gameObjList [i].GetComponent<UIHolder> () != null) {
-					gameObjList [i].GetComponent<UIHolder> ().curIdxInList = i;
-					gameObjList [i].GetComponent<UIHolder> ().hostLstObjid = objidOnHolder;
-					gameObjList [i].GetComponent<UIHolder> ().parentHolderInsID = hostHolderInsID;
-					gameObjList[i].GetComponent<UIHolder>().onCallEvent4List = OnClickFromItem;
-				}
-				else {
-					#if UNITY_EDITOR
+			for (int i = 0; i < Mathf.Min (_realShowItemCount, gameObjList.Count); i++) {
+				if (gameObjList[i].GetComponent<UIHolder> () != null) {
+					gameObjList[i].GetComponent<UIHolder> ().curIdxInList = i;
+					gameObjList[i].GetComponent<UIHolder> ().hostLstObjid = objidOnHolder;
+					gameObjList[i].GetComponent<UIHolder> ().parentHolderInsID = hostHolderInsID;
+					gameObjList[i].GetComponent<UIHolder> ().onCallEvent4List = OnClickFromItem;
+				} else {
+#if UNITY_EDITOR
 					Debug.LogWarning ("====== LowoUN-UI ===> Dont forget add UIHolder for list item!!! on holder with ID: " + hostHolderInsID);
-					#endif
+#endif
 				}
 
 				/*if (gameObjList[i].GetComponent<UIActionBase>() != null)
@@ -264,8 +247,7 @@ namespace LowoUN.Module.UI.Com
 			objidOnHolder = objid;
 		}
 
-		public void SetItemFocused (int idx) {
-		}
+		public void SetItemFocused (int idx) { }
 
 		private int _realShowItemCount;
 
@@ -278,15 +260,15 @@ namespace LowoUN.Module.UI.Com
 			//if (isDynamic) {
 			_realShowItemCount = _infoCount;
 
-			CheckToLoadNewItems(gameObjList.Count, _infoCount);
+			CheckToLoadNewItems (gameObjList.Count, _infoCount);
 			//UpdateSize (_infoCount);
 			ArrangeItems ();
 			OpenItems ();
 
-			SetAllGameObjsVisible();
+			SetAllGameObjsVisible ();
 			InitAllGameObjsAction ();
 			SetAllGoDeselected ();
-			UpdateItemsInfo(itemList);
+			UpdateItemsInfo (itemList);
 
 			gameObject.SetActive (_realShowItemCount > 0);
 
@@ -298,8 +280,8 @@ namespace LowoUN.Module.UI.Com
 
 			if (_realShowItemCount > 0) {
 				lstIds = new List<int> ();
-				for (int i = 0; i < Mathf.Min(_realShowItemCount,gameObjList.Count); i++) {
-					lstIds.Add (gameObjList[i].GetComponent<UIHolder>().insID);
+				for (int i = 0; i < Mathf.Min (_realShowItemCount, gameObjList.Count); i++) {
+					lstIds.Add (gameObjList[i].GetComponent<UIHolder> ().insID);
 				}
 			}
 
@@ -309,17 +291,16 @@ namespace LowoUN.Module.UI.Com
 		private void SetAllGameObjsVisible () {
 			foreach (GameObject obj in gameObjList) {
 				ToggleItemVisibility (obj, false);
-				UIFunc_Lst.ResetItem (obj.GetComponent<UIHolder>());
+				UIFunc_Lst.ResetItem (obj.GetComponent<UIHolder> ());
 			}
 
-			for (int i = 0; i < Mathf.Min(_realShowItemCount,gameObjList.Count) && i < gameObjList.Count; i++) {
+			for (int i = 0; i < Mathf.Min (_realShowItemCount, gameObjList.Count) && i < gameObjList.Count; i++) {
 				//ToggleItemAction (gameObjList [i], true);
-				ToggleItemVisibility (gameObjList [i], true);
+				ToggleItemVisibility (gameObjList[i], true);
 			}
 		}
 
-		private void ToggleItemVisibility (GameObject obj, bool isShow)
-		{
+		private void ToggleItemVisibility (GameObject obj, bool isShow) {
 			UIHub.instance.ToggleItem (obj, isShow);
 		}
 
@@ -330,11 +311,11 @@ namespace LowoUN.Module.UI.Com
 				//SetAllGoDeselected ();
 
 				for (int i = 0; i < itemList.Count && i < gameObjList.Count; i++) {
-					if (gameObjList [i].GetComponent<UIHolder> () == null) {
+					if (gameObjList[i].GetComponent<UIHolder> () == null) {
 						Debug.LogWarning ("====== LowoUN-UI ===> Don't forget to add UIHolder to the list component on the panel with holder id: " + hostHolderInsID);
 					} else {
-						uiholdType = gameObjList [i].GetComponent<UIHolder> ().typeID;
-						uiholdInstanceID = gameObjList [i].GetComponent<UIHolder> ().insID;
+						uiholdType = gameObjList[i].GetComponent<UIHolder> ().typeID;
+						uiholdInstanceID = gameObjList[i].GetComponent<UIHolder> ().insID;
 						UILinker.instance.SetHolderItemInfo (uiholdType, uiholdInstanceID, itemList[i]);
 					}
 				}

@@ -1,12 +1,11 @@
 ﻿#pragma warning disable 0649//ignore default value null
-using UnityEngine;
-using UnityEngine.UI;
 using LowoUN.Util.Notify;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace LowoUN.Module.UI.Com
-{
-	[RequireComponent(typeof(RawImage))]
+namespace LowoUN.Module.UI.Com {
+	[RequireComponent (typeof (RawImage))]
 	public class UIRImg : MonoBehaviour {
 		[SerializeField]
 		private bool isInteractiveEnable = true;
@@ -25,10 +24,10 @@ namespace LowoUN.Module.UI.Com
 
 			if (isInteractiveEnable) {
 				if (evtHolder == null) {
-					evtHolder = new GameObject("Collider_3DModel").AddComponent<UIEventRedirect>();
+					evtHolder = new GameObject ("Collider_3DModel").AddComponent<UIEventRedirect> ();
 					evtHolder.transform.SetParent (transform);
-					evtHolder.GetComponent<RectTransform> ().anchorMin = new Vector2 (0f,0f);
-					evtHolder.GetComponent<RectTransform> ().anchorMax = new Vector2 (1f,1f);
+					evtHolder.GetComponent<RectTransform> ().anchorMin = new Vector2 (0f, 0f);
+					evtHolder.GetComponent<RectTransform> ().anchorMax = new Vector2 (1f, 1f);
 					evtHolder.GetComponent<RectTransform> ().anchoredPosition = Vector2.zero;
 					evtHolder.GetComponent<RectTransform> ().sizeDelta = Vector2.one;
 				}
@@ -46,7 +45,7 @@ namespace LowoUN.Module.UI.Com
 					NotifyMgr.AddListener<PointerEventData> (evtDragName, OnDragModel_ItemCharaInfo);
 					NotifyMgr.AddListener<PointerEventData> (evtDragEndName, OnDragModelEnd_ItemCharaInfo);
 				} else {
-					Debug.LogWarning (Util.Log.Format.UI() + "If you want to operate the ui 3D model, a UIEventRedirect obj is needed!!!");
+					Debug.LogWarning (Util.Log.Format.UI () + "If you want to operate the ui 3D model, a UIEventRedirect obj is needed!!!");
 				}
 			}
 		}
@@ -59,19 +58,16 @@ namespace LowoUN.Module.UI.Com
 			}
 		}
 
-		private void OnPointerClick_ItemCharaInfo(UnityEngine.EventSystems.PointerEventData _data)
-		{
+		private void OnPointerClick_ItemCharaInfo (UnityEngine.EventSystems.PointerEventData _data) {
 			if (_ui3DModle != null) {
-				_ui3DModle.TriggerAnimation();
-			}		
+				_ui3DModle.TriggerAnimation ();
+			}
 		}
-		private void OnDragModel_ItemCharaInfo(UnityEngine.EventSystems.PointerEventData _data)
-		{
+		private void OnDragModel_ItemCharaInfo (UnityEngine.EventSystems.PointerEventData _data) {
 			if (_ui3DModle != null)
 				_ui3DModle.RotateActor (-_data.delta.x);
 		}
-		private void OnDragModelEnd_ItemCharaInfo(UnityEngine.EventSystems.PointerEventData _data)
-		{
+		private void OnDragModelEnd_ItemCharaInfo (UnityEngine.EventSystems.PointerEventData _data) {
 			if (_ui3DModle != null)
 				_ui3DModle.RotateActor (-_data.delta.x);
 		}
@@ -79,16 +75,16 @@ namespace LowoUN.Module.UI.Com
 		public GameObject SetInfo (object data, string assetName) {
 			GameObject chara3D = null;
 
-			RawImage img = go.GetComponent<RawImage>();
-			RenderTexture m_Texture = CreateTexture(img.GetComponent<RectTransform>().sizeDelta);
+			RawImage img = go.GetComponent<RawImage> ();
+			RenderTexture m_Texture = CreateTexture (img.GetComponent<RectTransform> ().sizeDelta);
 			img.texture = m_Texture;
 
 			chara3D = LowoUN.Module.Asset.Module_Asset.instance.LoadModel (assetName);
-			IUI3DModel chara = chara3D.GetComponent<IUI3DModel>();
-			if(chara != null)
+			IUI3DModel chara = chara3D.GetComponent<IUI3DModel> ();
+			if (chara != null)
 				chara.CreateModel (data, m_Texture);
 
-			if(chara3D != null)
+			if (chara3D != null)
 				_ui3DModle = chara3D.GetComponent<IUI3DModel> ();
 
 			return chara3D;
@@ -97,24 +93,23 @@ namespace LowoUN.Module.UI.Com
 		public GameObject SetInfo (int typid, string assetName) {
 			GameObject chara3D = null;
 
-			RawImage img = go.GetComponent<RawImage>();
-			RenderTexture m_Texture = CreateTexture(img.GetComponent<RectTransform>().sizeDelta);
+			RawImage img = go.GetComponent<RawImage> ();
+			RenderTexture m_Texture = CreateTexture (img.GetComponent<RectTransform> ().sizeDelta);
 			img.texture = m_Texture;
 
 			chara3D = LowoUN.Module.Asset.Module_Asset.instance.LoadModel (assetName);
-			IUI3DModel chara = chara3D.GetComponent<IUI3DModel>();
-			if(chara != null)
+			IUI3DModel chara = chara3D.GetComponent<IUI3DModel> ();
+			if (chara != null)
 				chara.CreateModelByID (typid, m_Texture);
 
 			return chara3D;
 		}
 
-		private RenderTexture CreateTexture(Vector2 v2)
-		{
+		private RenderTexture CreateTexture (Vector2 v2) {
 			RenderTexture m_Texture = null;
-			m_Texture = new RenderTexture((int)v2.x, (int)v2.y, 16,RenderTextureFormat.ARGB32);
+			m_Texture = new RenderTexture ((int) v2.x, (int) v2.y, 16, RenderTextureFormat.ARGB32);
 			m_Texture.autoGenerateMips = false;
-			m_Texture.Create();
+			m_Texture.Create ();
 
 			return m_Texture;
 		}

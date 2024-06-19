@@ -1,26 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
-namespace LowoUN.Module.UI
-{
-	public class UIAdaptScreen : MonoBehaviour 
-	{
+namespace LowoUN.Module.UI {
+	public class UIAdaptScreen : MonoBehaviour {
 		private CanvasScaler canvasScaler;
 		private CanvasScaler.ScaleMode scaleMode;
 		private Vector2 referenceResolution;
 		private float match;
 
 		private static UIAdaptScreen _instance = null;
-		public static UIAdaptScreen instance
-		{
+		public static UIAdaptScreen instance {
 			get {
 				//_instance = GameObject.FindObjectOfType<UIAdaptScreen>();
 				//if (_instance == null)
 				//	_instance = new GameObject("UIAdaptScreen").AddComponent<UIAdaptScreen>();
 				if (_instance == null)
 					Debug.LogError ("====== LowoUN-UI ===> don't forget add script 'UIAdaptScreen' !!!");
-				
+
 				return _instance;
 			}
 		}
@@ -28,8 +24,7 @@ namespace LowoUN.Module.UI
 		void Awake () {
 			if (_instance != null) {
 				Debug.LogError ("====== LowoUN-UI ===> UIAdaptScreen - add to gameobject repeatedly is Forbidden");
-			}
-			else {
+			} else {
 				_instance = this;
 
 				canvasScaler = gameObject.GetComponent<CanvasScaler> ();
@@ -38,7 +33,7 @@ namespace LowoUN.Module.UI
 				match = canvasScaler.matchWidthOrHeight;
 			}
 		}
-		
+
 		// Update is called once per frame
 		void Update () {
 
@@ -58,10 +53,10 @@ namespace LowoUN.Module.UI
 
 		public bool isWidthTendencyWhenVScreen {
 			get {
-                /*~= 3:4*/
-                float proportion = Screen.width / (float)Screen.height;
-                return proportion > 0.7f;
-            }
+				/*~= 3:4*/
+				float proportion = Screen.width / (float) Screen.height;
+				return proportion > 0.7f;
+			}
 		}
 
 		public float GetScaleRate () {
@@ -82,7 +77,7 @@ namespace LowoUN.Module.UI
 		}
 
 		public float GetFixRate4TransformUICamera () {
-			return referenceResolution.y / 2 / CalMainCameraSize();
+			return referenceResolution.y / 2 / CalMainCameraSize ();
 			//if(referenceResolution.x >= referenceResolution.y)
 			//	return referenceResolution.y / 2 / (referenceResolution.x / referenceResolution.y);
 			//else 
@@ -99,7 +94,7 @@ namespace LowoUN.Module.UI
 			} else {
 				s = referenceResolution.y / referenceResolution.x;
 			}
-			
+
 			//cam.orthographicSize = s;
 			return s;
 		}

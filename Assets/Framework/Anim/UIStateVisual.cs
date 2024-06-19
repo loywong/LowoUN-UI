@@ -1,12 +1,9 @@
 ﻿#pragma warning disable 0649//ignore default value null
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace LowoUN.Module.UI 
-{
-	public class UIStateVisual : MonoBehaviour
-	{
+namespace LowoUN.Module.UI {
+	public class UIStateVisual : MonoBehaviour {
 		[SerializeField]
 		private UIFrameAnimPlayer selectedFrameAnim;
 		[SerializeField]
@@ -18,7 +15,7 @@ namespace LowoUN.Module.UI
 
 		private void SetSelectedStateGoes (bool isSelected) {
 			if (selectedGoes != null && selectedGoes.Count > 0)
-				selectedGoes.ForEach (i=>i.SetActive(isSelected));
+				selectedGoes.ForEach (i => i.SetActive (isSelected));
 		}
 
 		public void SetState (UIStateType type) {
@@ -29,27 +26,20 @@ namespace LowoUN.Module.UI
 			}
 		}
 
-		public void PlayFrameAnimEff(bool isPlay)
-        {
-			if (selectedFrameAnim != null)
-            {
-                if (isPlay)
-                {
+		public void PlayFrameAnimEff (bool isPlay) {
+			if (selectedFrameAnim != null) {
+				if (isPlay) {
 					//selectedFrameAnim.gameObject.SetActive(true);
-					if (!selectedFrameAnim.isPlaying)
-                    {
-						selectedFrameAnim.StartPlay();
-                    }
-                }
-                else
-                {
-					if (selectedFrameAnim.isPlaying)
-                    {
-						selectedFrameAnim.StopPlay();
-                    }
+					if (!selectedFrameAnim.isPlaying) {
+						selectedFrameAnim.StartPlay ();
+					}
+				} else {
+					if (selectedFrameAnim.isPlaying) {
+						selectedFrameAnim.StopPlay ();
+					}
 					//selectedFrameAnim.gameObject.SetActive(false);
-                }
-            }
-        }
+				}
+			}
+		}
 	}
 }

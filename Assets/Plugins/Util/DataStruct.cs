@@ -7,56 +7,47 @@
 /// Pairs are a particular case of tuple.
 /// </summary>
 
-public class Pair<T, U>
-{
+public class Pair<T, U> {
 	public T first;
 	public U second;
-	public Pair(T Key, U Value)
-	{
+	public Pair (T Key, U Value) {
 		this.first = Key;
 		this.second = Value;
 	}
 
-	public override string ToString ()
-	{
-		return string.Format ("Pair:{0}+{1}", first.ToString(), second.ToString());
+	public override string ToString () {
+		return string.Format ("Pair:{0}+{1}", first.ToString (), second.ToString ());
 	}
 }
-public class Tuple<T1, T2, T3>
-{
+public class Tuple<T1, T2, T3> {
 	public T1 item1 { get; private set; }
 	public T2 item2 { get; private set; }
 	public T3 item3 { get; private set; }
-	public Tuple(T1 Item1, T2 Item2, T3 Item3)
-	{
+	public Tuple (T1 Item1, T2 Item2, T3 Item3) {
 		this.item1 = Item1;
 		this.item2 = Item2;
 		this.item3 = Item3;
 	}
 }
-public class Tuple<T1, T2, T3, T4>
-{
+public class Tuple<T1, T2, T3, T4> {
 	public T1 item1 { get; private set; }
 	public T2 item2 { get; private set; }
 	public T3 item3 { get; private set; }
 	public T4 item4 { get; private set; }
-	public Tuple(T1 Item1, T2 Item2, T3 Item3, T4 Item4)
-	{
+	public Tuple (T1 Item1, T2 Item2, T3 Item3, T4 Item4) {
 		this.item1 = Item1;
 		this.item2 = Item2;
 		this.item3 = Item3;
 		this.item4 = Item4;
 	}
 }
-public class Tuple<T1, T2, T3, T4, T5>
-{
+public class Tuple<T1, T2, T3, T4, T5> {
 	public T1 item1 { get; private set; }
 	public T2 item2 { get; private set; }
 	public T3 item3 { get; private set; }
 	public T4 item4 { get; private set; }
 	public T5 item5 { get; private set; }
-	public Tuple(T1 Item1, T2 Item2, T3 Item3, T4 Item4, T5 Item5)
-	{
+	public Tuple (T1 Item1, T2 Item2, T3 Item3, T4 Item4, T5 Item5) {
 		this.item1 = Item1;
 		this.item2 = Item2;
 		this.item3 = Item3;

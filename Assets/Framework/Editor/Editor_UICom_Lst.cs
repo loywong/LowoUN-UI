@@ -4,11 +4,9 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Reflection;
 using LowoUN.Business.UI;
-using LowoUN.Util;
 
-namespace LowoUN.Module.UI.Com
-{
-	[CustomEditor(typeof(UIList))]
+namespace LowoUN.Module.UI.Com {
+    [CustomEditor(typeof(UIList))]
 	public class Editor_UICom_Lst : Editor {
 		//Layout ///////////////////////////////////////////////////////////////
 		private enum UIEnum_LstTyp {
@@ -22,9 +20,9 @@ namespace LowoUN.Module.UI.Com
 		private UIList uilst;
 		private RectTransform lstRT;
 		private UIEnum_LstTyp _lsttyp;
-		private UIEnum_LstTyp lsttyp{
-			get{ return _lsttyp;}
-			set{ 
+		private UIEnum_LstTyp lsttyp {
+			get { return _lsttyp;}
+			set { 
 				_lsttyp = value;
 
 				if (value == UIEnum_LstTyp.General) {
@@ -91,8 +89,7 @@ namespace LowoUN.Module.UI.Com
 		private static Dictionary<string, Pair<List<string>, List<bool>>> cachePanelAssetDict = null;
 
 		private UIList _target;
-		public void OnEnable()
-		{
+		public void OnEnable() {
 			uilst = target as UIList;
 			lstRT = uilst.GetComponent<RectTransform> ();
 
@@ -103,7 +100,7 @@ namespace LowoUN.Module.UI.Com
 
 			scrollView             = obj.FindProperty("scrollView");
 
-			//isDynamic              = obj.FindProperty("isDynamic");
+			// isDynamic              = obj.FindProperty("isDynamic");
 
 			isUseStaticPos         = obj.FindProperty("isUseStaticPos");
 
@@ -121,9 +118,9 @@ namespace LowoUN.Module.UI.Com
 
 			posStaticList          = obj.FindProperty("posStaticList");
 
-//			gameObjList            = obj.FindProperty("gameObjList");
-//			isStillShow            = obj.FindProperty("isStillShow");
-//			isArrange4Static       = obj.FindProperty("isArrange4Static");
+			// gameObjList            = obj.FindProperty("gameObjList");
+			// isStillShow            = obj.FindProperty("isStillShow");
+			// isArrange4Static       = obj.FindProperty("isArrange4Static");
 			isURoll4Static         = obj.FindProperty("isURoll4Static");
 			isVRoll4Static         = obj.FindProperty("isVRoll4Static");
 
@@ -168,8 +165,7 @@ namespace LowoUN.Module.UI.Com
 		//private string GetIdxByID (int id) {
 		//	return System.Enum.GetName(typeof(UIPanelType), id);
 		//}
-		private void CheckScrollView ()
-		{
+		private void CheckScrollView () {
 			if (scrollView.objectReferenceValue == null) {
 				Transform go = _target.transform.parent.parent;
 				if (go != null && go.GetComponent<ScrollRect> () != null) {
@@ -181,8 +177,7 @@ namespace LowoUN.Module.UI.Com
 			}
 		}
 
-		public override void OnInspectorGUI()
-		{
+		public override void OnInspectorGUI() {
 			lsttyp = (UIEnum_LstTyp)EditorGUILayout.EnumPopup ("Layout", lsttyp);
 
 			obj.Update ();
@@ -257,14 +252,12 @@ namespace LowoUN.Module.UI.Com
 				//-------------------------------- panel class ---------------------------------
 				className = EditorGUILayout.EnumPopup("Panel Class", (UIPanelClass)System.Enum.Parse(typeof(UIPanelClass), className)).ToString();
 
-				if (cachePanelClassDictReverse.ContainsKey(className))
-				{
+				if (cachePanelClassDictReverse.ContainsKey(className)) {
 					int idx = cachePanelClassDictReverse[className].IndexOf(typeIdx.stringValue);
 
 					idx = Mathf.Min( Mathf.Max(0, idx), cachePanelClassDictReverse[className].Count - 1);
 					int idx_new = EditorGUILayout.Popup("Panel Type", idx, cachePanelClassDictReverse[className].ToArray());
-					if (idx_new != idx)
-					{
+					if (idx_new != idx) {
 						typeIdx.stringValue = cachePanelClassDictReverse[className][idx_new];
 					}
 					//EditorGUILayout.BeginHorizontal("box");
@@ -277,27 +270,22 @@ namespace LowoUN.Module.UI.Com
 				//EditorGUILayout.PropertyField (itemPanelType);
 
 				string enumName = itemPanelType.enumNames[itemPanelType.enumValueIndex];
-				if (itemPanelType.enumValueIndex > 0 && cachePanelAssetDict.ContainsKey(enumName))
-				{
+				if (itemPanelType.enumValueIndex > 0 && cachePanelAssetDict.ContainsKey(enumName)) {
 					List<string> names = cachePanelAssetDict[enumName].first;
-					if (names.Count > 0)
-					{
+					if (names.Count > 0) {
 						int i = names.FindIndex(x => string.Equals(x, itemPanelPrefab.stringValue));
-						if (i < 0)
-						{
+						if (i < 0) {
 							i = 0;
 						}
 						i = EditorGUILayout.Popup( "Item Panel Prefab", i, names.ToArray());
 						itemPanelPrefab.stringValue = names[i];
 					}
-					else
-					{
+					else {
 						itemPanelPrefab.stringValue = "";
 						EditorGUILayout.LabelField("No prefab definde for " + enumName);
 					}
 				}
-				else
-				{
+				else {
 					itemPanelPrefab.stringValue = enumName;
 				}
 
@@ -393,26 +381,21 @@ namespace LowoUN.Module.UI.Com
 			obj.ApplyModifiedProperties ();
 		}
 
-		private void CachePanelAsset ()
-		{
+		private void CachePanelAsset () {
 			//cache panel class ------------------------------------------------
-			cachePanelClassDict = new Dictionary<string, List<string>>();
-			cachePanelClassDictReverse = new Dictionary<string, List<string>>();
+			cachePanelClassDict = new Dictionary<string, List<string>> ();
+			cachePanelClassDictReverse = new Dictionary<string, List<string>> ();
 
-			foreach (FieldInfo field in UIPanelType.None.GetType().GetFields())
-			{
+			foreach (FieldInfo field in UIPanelType.None.GetType().GetFields())	{
 				object[] objs = field.GetCustomAttributes(typeof(UIPrefabDesc), true);
-				if (objs != null && objs.Length > 0)
-				{
+				if (objs != null && objs.Length > 0) {
 					List<string> classNames = new List<string>();
-					foreach (UIPrefabDesc desc in objs)
-					{
+					foreach (UIPrefabDesc desc in objs) {
 						string name = desc.prefabClass.ToString();
 						if (!classNames.Contains(name))
 							classNames.Add(name);
 
-						if (!cachePanelClassDictReverse.ContainsKey(name))
-						{
+						if (!cachePanelClassDictReverse.ContainsKey(name)) {
 							cachePanelClassDictReverse[name] = new List<string>(){"None"};
 						}
 						cachePanelClassDictReverse[name].Add(field.Name);
@@ -420,26 +403,24 @@ namespace LowoUN.Module.UI.Com
 					cachePanelClassDict[field.Name] = classNames;
 				}
 			}
-			if (!cachePanelClassDict.ContainsKey("None"))
-			{
+
+			if (!cachePanelClassDict.ContainsKey("None")) {
 				cachePanelClassDict["None"] = new List<string> { "None" };
 			}
-			if (!cachePanelClassDictReverse.ContainsKey("None"))
-			{
+
+			if (!cachePanelClassDictReverse.ContainsKey("None")) {
 				cachePanelClassDictReverse["None"] = new List<string> { "None" };
 			}
 
 			//cache panel prefab ------------------------------------------------
-			cachePanelAssetDict = new Dictionary<string, Pair<List<string>, List<bool>>>();
+			cachePanelAssetDict = new Dictionary<string, Pair<List<string>, List<bool>>> ();
 
 			foreach (FieldInfo field in UIPanelType.None.GetType().GetFields ()) {
 				object[] objs = field.GetCustomAttributes(typeof(UIPrefabDesc), true);
-				if (objs != null && objs.Length > 0)
-				{
+				if (objs != null && objs.Length > 0) {
 					List<string> prefabs = new List<string>();
 					List<bool> isdialogue = new List<bool>();
-					foreach(UIPrefabDesc desc in objs)
-					{
+					foreach(UIPrefabDesc desc in objs) {
 						prefabs.Add(desc.prefabName);
 						isdialogue.Add(desc.isDialog);
 					}

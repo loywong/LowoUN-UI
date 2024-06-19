@@ -1,12 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using LowoUN.Module.UI;
 
-namespace LowoUN.Business.UI 
-{
-	public partial class UIHandler 
-	{
+namespace LowoUN.Business.UI {
+	public partial class UIHandler {
 		public enum Objs_Loading {
 			None,
 			Txt_Desc,
@@ -18,26 +14,26 @@ namespace LowoUN.Business.UI
 			Con_Bg,
 			Con_Logo,
 		}
-		
-//		public enum Evts_Loading {
-//			None,
-//		}
-		
-		[UIBinderAtt(UIPanelType.Loading)]
+
+		//		public enum Evts_Loading {
+		//			None,
+		//		}
+
+		[UIBinderAtt (UIPanelType.Loading)]
 		public UIBinder GetUIData4Loading (int instanceID) {
-			return new UIBinderLoading ((int)UIPanelType.Loading, instanceID);
+			return new UIBinderLoading ((int) UIPanelType.Loading, instanceID);
 		}
 
-	#if UNITY_EDITOR
-		[ObjsAtt4UIInspector(UIPanelType.Loading)]
-		public List<string> SetInspectorObjectEnum4Loading() {
+#if UNITY_EDITOR
+		[ObjsAtt4UIInspector (UIPanelType.Loading)]
+		public List<string> SetInspectorObjectEnum4Loading () {
 			return UILinker.instance.GetEnumNameList<Objs_Loading> ();
 		}
 
-//		[EvtsAtt4UIInspector(UIPanelType.Loading)]
-//		public List<string> SetInspectorEventEnum4Loading() {
-//			return UILinker.instance.GetEnumNameList<Evts_Loading> ();
-//		}
-	#endif
+		//		[EvtsAtt4UIInspector(UIPanelType.Loading)]
+		//		public List<string> SetInspectorEventEnum4Loading() {
+		//			return UILinker.instance.GetEnumNameList<Evts_Loading> ();
+		//		}
+#endif
 	}
 }

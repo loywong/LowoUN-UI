@@ -2,14 +2,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LowoUN.Module.UI.Com
-{
-	[RequireComponent(typeof(Button))]
-	public class UITogl : UIActionBase, ISelect, IName
-	{
+namespace LowoUN.Module.UI.Com {
+	[RequireComponent (typeof (Button))]
+	public class UITogl : UIActionBase, ISelect, IName {
 
 		[SerializeField]
-		private bool _isSelete;//initial value
+		private bool _isSelete; //initial value
 		[SerializeField]
 		private GameObject _selectedGo;
 		[SerializeField]
@@ -23,17 +21,17 @@ namespace LowoUN.Module.UI.Com
 		// Use this for initialization
 		void Awake () {
 			_btn = GetComponent<Button> ();
-			_btn.onClick.AddListener (delegate () {OnAction ();});
+			_btn.onClick.AddListener (delegate () { OnAction (); });
 
 			__isSelect = _isSelete;
 			ToggleEffect (__isSelect);
 		}
 
-		private void OnAction(){
+		private void OnAction () {
 			//Debug.Log("onCallEvent : check box");
 			SetSelectState (!__isSelect);
 
-			if(onCallEvent != null)
+			if (onCallEvent != null)
 				onCallEvent (curEventID, __isSelect, hostHolderInsID);
 		}
 
@@ -62,21 +60,20 @@ namespace LowoUN.Module.UI.Com
 			}
 		}
 
-//		public override void SetSelectState (bool isSelect) {
-//			if (isSelect != _isSelete) {
-//				_isSelete = isSelect;
-//
-//				ToggleEffect (_isSelete);
-//			}
-//		}
+		//		public override void SetSelectState (bool isSelect) {
+		//			if (isSelect != _isSelete) {
+		//				_isSelete = isSelect;
+		//
+		//				ToggleEffect (_isSelete);
+		//			}
+		//		}
 
 		private void ToggleEffect (bool isSelete) {
-			if (_selectedGo == null) {// || _deselectedGo == null
+			if (_selectedGo == null) { // || _deselectedGo == null
 				Debug.LogError ("====== LowoUN-UI ===> Don't forget to set seleted flag!" + "obj id: " + curEventID + "/ host holder id: " + hostHolderInsID);
-			} 
-			else {
-				UIHub.instance.ToggleItem(_selectedGo, isSelete);
-				if(_deselectedGo != null)
+			} else {
+				UIHub.instance.ToggleItem (_selectedGo, isSelete);
+				if (_deselectedGo != null)
 					UIHub.instance.ToggleItem (_deselectedGo, !isSelete);
 				//_selectedGo.SetActive (isSelete);
 				//_deselectedGo.SetActive (!isSelete);

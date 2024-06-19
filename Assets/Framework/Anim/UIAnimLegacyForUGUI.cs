@@ -1,13 +1,9 @@
-﻿using UnityEngine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace LowoUN.Module.UI 
-{
-	public class UIAnimLegacyForUGUI : MonoBehaviour 
-	{
+namespace LowoUN.Module.UI {
+	public class UIAnimLegacyForUGUI : MonoBehaviour {
 		Color newColor = Color.clear;
 
 		bool isStartCheck = false;
@@ -23,7 +19,7 @@ namespace LowoUN.Module.UI
 						newColor = txt.color;
 						//Debug.Log ("img.color : " + img.color);
 						//Debug.Log ("img.sprite name : " + img.sprite.name);
-						txt.color = new Color (newColor.r,newColor.g,newColor.b,(float)(Math.Floor(newColor.a*100)/100));
+						txt.color = new Color (newColor.r, newColor.g, newColor.b, (float) (Math.Floor (newColor.a * 100) / 100));
 					}
 				}
 
@@ -31,13 +27,13 @@ namespace LowoUN.Module.UI
 					foreach (Image img in imgArr) {
 						if (img == null)
 							continue;
-						
+
 						//Vector4 v4= new Vector4 (r,g,b,a);
 						//Debug.Log ("img.color: " + v4);
 						newColor = img.color;
 						//Debug.Log ("img.color : " + img.color);
 						//Debug.Log ("img.sprite name : " + img.sprite.name);
-						img.color = new Color (newColor.r,newColor.g,newColor.b,(float)(Math.Floor(newColor.a*100)/100));
+						img.color = new Color (newColor.r, newColor.g, newColor.b, (float) (Math.Floor (newColor.a * 100) / 100));
 					}
 				}
 			}

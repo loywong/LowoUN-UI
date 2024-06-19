@@ -1,52 +1,44 @@
 ﻿using System.Collections.Generic;
 using LowoUN.Module.UI;
-using LowoUN.Util.Notify;
 
-namespace LowoUN.Business.UI
-{
-	public partial class UIHandler
-	{
-		public enum Objs_ItemReward
-        {
+namespace LowoUN.Business.UI {
+	public partial class UIHandler {
+		public enum Objs_ItemReward {
 			None,
 			Txt_Idx,
 		}
 
-		public enum Evts_ItemReward
-        {
+		public enum Evts_ItemReward {
 			None,
 		}
 
 		#region ---------------- for holder ui inspector ----------------
-		#if UNITY_EDITOR
+#if UNITY_EDITOR
 		[ObjsAtt4UIInspector (UIPanelType.ItemReward)]
-		public List<string> SetInspectorObjectEnum4ItemReward()
-		{
+		public List<string> SetInspectorObjectEnum4ItemReward () {
 			return UILinker.instance.GetEnumNameList<Objs_ItemReward> ();
 		}
 
 		[EvtsAtt4UIInspector (UIPanelType.ItemReward)]
-		public List<string> SetInspectorEventEnum4ItemReward()
-		{
+		public List<string> SetInspectorEventEnum4ItemReward () {
 			return UILinker.instance.GetEnumNameList<Evts_ItemReward> ();
 		}
-		#endif
+#endif
 		#endregion
 
 		#region ----------------- ui binder constructor -----------------
 		[UIBinderAtt (UIPanelType.ItemReward)]
-		public UIBinder GetUIBinder4ItemReward(int instanceID)
-		{
-			return new UIBinderItemReward((int)UIPanelType.ItemReward, instanceID);
+		public UIBinder GetUIBinder4ItemReward (int instanceID) {
+			return new UIBinderItemReward ((int) UIPanelType.ItemReward, instanceID);
 		}
-        #endregion
+		#endregion
 
-        #region ----------------- handle notify events ------------------
+		#region ----------------- handle notify events ------------------
 
-        #endregion
+		#endregion
 
-        #region ------ responce for the interactive ui components ------
+		#region ------ responce for the interactive ui components ------
 
-        #endregion
-    }
+		#endregion
+	}
 }

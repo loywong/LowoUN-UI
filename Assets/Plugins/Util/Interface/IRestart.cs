@@ -1,7 +1,5 @@
-﻿namespace LowoUN.Util
-{
-	public interface IRestart
-	{
+﻿namespace LowoUN.Util {
+	public interface IRestart {
 		void OnReset ();
 	}
 }

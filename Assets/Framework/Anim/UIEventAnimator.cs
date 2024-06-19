@@ -1,17 +1,15 @@
 ﻿#pragma warning disable 0649//ignore default value null
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using LowoUN.Util.Notify;
+using UnityEngine;
 
-namespace LowoUN.Module.UI 
-{
+namespace LowoUN.Module.UI {
 	public enum UIEventType {
 		None,
 		GoldOnTarget,
 		DiamondOnTarget,
 		MeltingEquip,
-	};
+	}
 
 	public class UIEventAnimator : MonoBehaviour {
 		[SerializeField]
@@ -20,21 +18,19 @@ namespace LowoUN.Module.UI
 		private System.Action onCompleteEvent;
 
 		void Start () {
-			NotifyMgr.AddListener<UIEventType> ( "UIEventAnim", OnUIEventAnim);
-			NotifyMgr.AddListener<UIEventType> ( "UIEventAnim_Stop", OnUIStopEventAnim);
+			NotifyMgr.AddListener<UIEventType> ("UIEventAnim", OnUIEventAnim);
+			NotifyMgr.AddListener<UIEventType> ("UIEventAnim_Stop", OnUIStopEventAnim);
 		}
 
-		void OnDestroy()
-		{
-			NotifyMgr.RemoveListener<UIEventType> ( "UIEventAnim", OnUIEventAnim);
-			NotifyMgr.RemoveListener<UIEventType> ( "UIEventAnim_Stop", OnUIStopEventAnim);
+		void OnDestroy () {
+			NotifyMgr.RemoveListener<UIEventType> ("UIEventAnim", OnUIEventAnim);
+			NotifyMgr.RemoveListener<UIEventType> ("UIEventAnim_Stop", OnUIStopEventAnim);
 		}
-
 
 		void Update () {
 			foreach (UIEventAnim n in uiEventAnimList) {
 				if (n.obj != null) {
-					n.OnUpdate();
+					n.OnUpdate ();
 				}
 			}
 		}
@@ -50,20 +46,19 @@ namespace LowoUN.Module.UI
 						n.Play ();
 					}
 				}
-			}	
+			}
 		}
 		public void OnUIStopEventAnim (UIEventType eventName) {
 			foreach (UIEventAnim n in uiEventAnimList) {
 				if (n.obj != null) {
 					if (n.EventName == eventName) {
-						n.Stop();
+						n.Stop ();
 					}
 				}
-			}	
+			}
 		}
 
 	}
-
 
 	[System.Serializable]
 	public class UIEventAnim {
@@ -85,9 +80,8 @@ namespace LowoUN.Module.UI
 					started = false;
 					played = true;
 				}
-			} else if(played){
-				if(finishTime >0 && timeGo >= finishTime)
-				{
+			} else if (played) {
+				if (finishTime > 0 && timeGo >= finishTime) {
 					Stop ();
 				}
 			}

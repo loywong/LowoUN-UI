@@ -2,11 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
-namespace LowoUN.Module.UI.HUDText
-{
-    public class UText_Notify : MonoBehaviour, IUTxt
-    {
+namespace LowoUN.Module.UI.HUDText {
+    public class UText_Notify : MonoBehaviour, IUTxt {
         //public CanvasGroup layoutRoot = null;
         //public Text insText = null;
         public Text tObj = null;
@@ -45,9 +42,8 @@ namespace LowoUN.Module.UI.HUDText
         public System.Action<IUTxt> onAnimComplete;
         private int hashcode;
 
-        void Awake()
-        {
-            hashcode = GetHashCode();
+        void Awake () {
+            hashcode = GetHashCode ();
         }
 
         //public void SetInfo(string info)
@@ -69,10 +65,9 @@ namespace LowoUN.Module.UI.HUDText
         //        UIAnimPlayer.Play(gameObject, anim);
         //}
 
-        public void CompleteAnim()
-        {
+        public void CompleteAnim () {
             if (onAnimComplete != null)
-                onAnimComplete(this);
+                onAnimComplete (this);
         }
     }
 }

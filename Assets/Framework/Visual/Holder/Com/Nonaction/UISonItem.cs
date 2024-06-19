@@ -1,24 +1,22 @@
 ﻿#pragma warning disable 0649//ignore default value null
-using UnityEngine;
 using System;
 using System.Collections.Generic;
 using LowoUN.Business.UI;
+using UnityEngine;
 
-namespace LowoUN.Module.UI.Com
-{
-	public class UISonItem : UIActionBase
-	{
-		#if UNITY_EDITOR
+namespace LowoUN.Module.UI.Com {
+	public class UISonItem : UIActionBase {
+#if UNITY_EDITOR
 		[SerializeField]
-		private UIPanelClass classID;// = UIPanelClass.None;
-		#endif
+		private UIPanelClass classID; // = UIPanelClass.None;
+#endif
 		[SerializeField]
-		private string       typeIdx = UIPanelType.None.ToString();
+		private string typeIdx = UIPanelType.None.ToString ();
 
 		[SerializeField]
 		private UIPanelType itemPanelType;
 		[SerializeField]
-		private string      itemPanelPrefab;
+		private string itemPanelPrefab;
 
 		//regular position for dynamic loaded items ----------------------
 		[SerializeField]
@@ -27,21 +25,20 @@ namespace LowoUN.Module.UI.Com
 		private float itemHeight = -1f;
 
 		//free position for dynamic loaded items -------------------------
-		private List<GameObject> posStaticList = new List<GameObject>();
-		private List<GameObject> gameObjList   = new List<GameObject>();
+		private List<GameObject> posStaticList = new List<GameObject> ();
+		private List<GameObject> gameObjList = new List<GameObject> ();
 
 		// Use this for initialization
 		void Awake () {
-			posStaticList.Add(gameObject);
+			posStaticList.Add (gameObject);
 		}
 
-		void Start () {
-		}
+		// void Start () { }
 
-		// Update is called once per frame
-		void Update () {
+		// // Update is called once per frame
+		// void Update () {
 
-		}
+		// }
 
 		Transform itemTrans;
 		private void CheckToLoadNewItem () {
@@ -49,29 +46,24 @@ namespace LowoUN.Module.UI.Com
 				GameObject itemGameObj = null;
 
 				//----------------- load item ui -----------------
-				if (!string.IsNullOrEmpty(itemPanelPrefab))
-				{
+				if (!string.IsNullOrEmpty (itemPanelPrefab)) {
 					bool match = false;
-					foreach( string name in UILinker.instance.GetPrefabNames(itemPanelType))
-					{
-						if (string.Equals(itemPanelPrefab, name, StringComparison.OrdinalIgnoreCase))
+					foreach (string name in UILinker.instance.GetPrefabNames (itemPanelType)) {
+						if (string.Equals (itemPanelPrefab, name, StringComparison.OrdinalIgnoreCase))
 							match = true;
 					}
 					if (match)
-						itemGameObj = UILinker.instance.LoadUI4ChildHolder(itemPanelPrefab) as GameObject;//, false, Enum_UIAsset.Son
+						itemGameObj = UILinker.instance.LoadUI4ChildHolder (itemPanelPrefab) as GameObject; //, false, Enum_UIAsset.Son
 					else
-						itemGameObj = UILinker.instance.LoadUI4ChildHolder(itemPanelType) as GameObject;//, Enum_UIAsset.Son
-				}
-				else
-					itemGameObj = UILinker.instance.LoadUI4ChildHolder(itemPanelType) as GameObject;//, Enum_UIAsset.Son
+						itemGameObj = UILinker.instance.LoadUI4ChildHolder (itemPanelType) as GameObject; //, Enum_UIAsset.Son
+				} else
+					itemGameObj = UILinker.instance.LoadUI4ChildHolder (itemPanelType) as GameObject; //, Enum_UIAsset.Son
 				//----------------- load item ui -----------------
-
 
 				if (itemGameObj == null) {
 					Debug.LogError ("====== LowoUN-UI ===> doesn't find the prefab with name: " + itemPanelPrefab);
-				}
-				else {
-					itemGameObj.name = itemPanelType.ToString();
+				} else {
+					itemGameObj.name = itemPanelType.ToString ();
 
 					itemTrans = itemGameObj.transform;
 					itemTrans.SetParent (transform);
@@ -87,8 +79,7 @@ namespace LowoUN.Module.UI.Com
 						itemHeight = itemTrans.GetComponent<RectTransform> ().sizeDelta.y;
 					}
 
-
-					itemTrans.GetComponent<RectTransform> ().anchoredPosition = new Vector2(itemWidth/2, -itemHeight/2);
+					itemTrans.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (itemWidth / 2, -itemHeight / 2);
 					itemGameObj.layer = transform.gameObject.layer;
 
 					gameObjList.Add (itemGameObj);
@@ -116,14 +107,13 @@ namespace LowoUN.Module.UI.Com
 
 		private UIPanelType uiholdType;
 		private int uiholdInstanceID;
-		private void UpdateItemsInfo<T> (T item) 
-		{
+		private void UpdateItemsInfo<T> (T item) {
 			if (gameObjList != null && gameObjList.Count > 0) {
-				if (gameObjList [0].GetComponent<UIHolder> () == null) {
+				if (gameObjList[0].GetComponent<UIHolder> () == null) {
 					Debug.LogWarning ("====== LowoUN-UI ===> Don't forget to add UIHolder component to the list item game object.");
 				} else {
-					uiholdType = gameObjList [0].GetComponent<UIHolder> ().typeID;
-					uiholdInstanceID = gameObjList [0].GetComponent<UIHolder> ().insID;
+					uiholdType = gameObjList[0].GetComponent<UIHolder> ().typeID;
+					uiholdInstanceID = gameObjList[0].GetComponent<UIHolder> ().insID;
 					UILinker.instance.SetHolderItemInfo (uiholdType, uiholdInstanceID, item);
 				}
 			} else {

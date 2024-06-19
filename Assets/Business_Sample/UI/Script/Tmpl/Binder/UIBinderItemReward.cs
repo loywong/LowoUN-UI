@@ -1,31 +1,27 @@
-﻿namespace LowoUN.Business.UI
-{
-	using Module.UI;
-	using HolderObjs = UIHandler.Objs_ItemReward;
+﻿using LowoUN.Module.UI;
 
-	public class UIBinderItemReward : LowoUN.Module.UI.UIBinder
-	{
+namespace LowoUN.Business.UI {
+    using HolderObjs = UIHandler.Objs_ItemReward;
+
+	public class UIBinderItemReward : UIBinder {
 		private int idx {
 			set {
-				onUpdateTxt((int)HolderObjs.Txt_Idx, value.ToString());
+				onUpdateTxt ((int) HolderObjs.Txt_Idx, value.ToString ());
 			}
 		}
 
-		public UIBinderItemReward(int uiPanelType, int instanceID) : base(uiPanelType, instanceID)
-		{
+		public UIBinderItemReward (int uiPanelType, int instanceID) : base (uiPanelType, instanceID) {
 
 		}
 
-		public override void OnStart (object info)
-		{
-			base.OnStart(info);
+		public override void OnStart (object info) {
+			base.OnStart (info);
 
 			//data
-			idx  = curIdxInList;
+			idx = curIdxInList;
 		}
 
-		protected override void OnEnd()
-		{
+		protected override void OnEnd () {
 			//throw new System.NotImplementedException ();
 		}
 	}

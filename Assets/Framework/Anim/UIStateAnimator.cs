@@ -1,27 +1,24 @@
 ﻿#pragma warning disable 0649//ignore default value null
-using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace LowoUN.Module.UI 
-{
+namespace LowoUN.Module.UI {
 	public enum UIStateType {
-		None        = 0,
+		None = 0,
 		ValueChange = 1,
-		Selected    = 10,//
-		Deselected  = 11,//
-		Show        = 20,
-		Hide        = 21,
-		Open     	= 22,
-		Close     	= 23,
-		Enable      = 30,
-		Disable     = 31,
-		MouseDown   = 40,
-		MouseUp     = 41,
-		Action1    	= 51,//custom animation 1
-		Action2    	= 52,//custom animation 2
-		Action3    	= 53,//custom animation 3
+		Selected = 10, //
+		Deselected = 11, //
+		Show = 20,
+		Hide = 21,
+		Open = 22,
+		Close = 23,
+		Enable = 30,
+		Disable = 31,
+		MouseDown = 40,
+		MouseUp = 41,
+		Action1 = 51, //custom animation 1
+		Action2 = 52, //custom animation 2
+		Action3 = 53, //custom animation 3
 	}
 
 	public class UIStateAnimator : MonoBehaviour {
@@ -39,22 +36,21 @@ namespace LowoUN.Module.UI
 
 		private UIStateType animType = UIStateType.None;
 
-		public void InitStateObjs(List<UIStateObj> states) {
+		public void InitStateObjs (List<UIStateObj> states) {
 			uiStatesObj = states;
 		}
 
-		public void AddStateObj(UIStateObj state) {
+		public void AddStateObj (UIStateObj state) {
 			if (uiStatesObj == null)
-				Debug.LogError (Util.Log.Format.UI() + "turn to use func: InitStateObjs(List<UIStateObj> states)");
-			
+				Debug.LogError (Util.Log.Format.UI () + "turn to use func: InitStateObjs(List<UIStateObj> states)");
+
 			if (uiStatesObj.Find (i => i.animType == state.animType) != null) {
-				Debug.LogWarning (Util.Log.Format.UI() + "state: "+ state.animType.ToString() + " has customized!!! on the UIButton: " + gameObject.name);
-				return; 
+				Debug.LogWarning (Util.Log.Format.UI () + "state: " + state.animType.ToString () + " has customized!!! on the UIButton: " + gameObject.name);
+				return;
 			}
-			
+
 			uiStatesObj.Add (state);
 		}
-
 
 		// Use this for initialization
 		void Start () {
@@ -63,7 +59,7 @@ namespace LowoUN.Module.UI
 
 		void PlayAutoAnim () {
 			if (autoPlayAnim != null) {
-				UIAnimPlayer.PlayAutoAnim(gameObject, autoPlayAnim);
+				UIAnimPlayer.PlayAutoAnim (gameObject, autoPlayAnim);
 			}
 		}
 
@@ -73,7 +69,7 @@ namespace LowoUN.Module.UI
 				foreach (UIStateObj item in uiStatesObj) {
 					foreach (UIObjAnim objItem in item.objAnimList) {
 						if (objItem.obj != null) {
-							objItem.OnUpdate();
+							objItem.OnUpdate ();
 						}
 					}
 				}
@@ -82,7 +78,7 @@ namespace LowoUN.Module.UI
 			TimerForCallFinish ();
 		}
 
-		public bool isPlaying{get{ return isStartAnim;}}
+		public bool isPlaying { get { return isStartAnim; } }
 
 		private float callFinishTime;
 		private float timeGo;
@@ -110,21 +106,20 @@ namespace LowoUN.Module.UI
 				}
 			}
 		}
-		
+
 		private System.Action onCompleteCallback;
 		public bool Play (UIStateType animType, System.Action callback = null) {
-			if (this.animType != UIStateType.ValueChange && 
+			if (this.animType != UIStateType.ValueChange &&
 				animType != UIStateType.Action1 &&
 				animType != UIStateType.Action2 &&
 				animType != UIStateType.Action3)
 				if (this.animType == animType)
 					return true;
 
-
 			if (this.animType != UIStateType.None)
 				if (this.animType != animType)
 					Stop ();
-			
+
 			this.animType = animType;
 			this.onCompleteCallback = callback;
 			return Play ();
@@ -137,7 +132,7 @@ namespace LowoUN.Module.UI
 					if (item.animType == animType && current_group_filter == item.group_filter) {
 						foreach (UIObjAnim objItem in item.objAnimList) {
 							if (objItem.obj != null) {
-								objItem.Skip();
+								objItem.Skip ();
 							}
 						}
 					}
@@ -155,7 +150,7 @@ namespace LowoUN.Module.UI
 
 						foreach (UIObjAnim objItem in item.objAnimList) {
 							if (objItem.obj != null) {
-								objItem.Play();
+								objItem.Play ();
 								//StartCoroutine(StartObjPlay(objItem));
 								hasPlayedAnim = true;
 							}
@@ -173,7 +168,7 @@ namespace LowoUN.Module.UI
 					if (item.animType == animType && current_group_filter == item.group_filter) {
 						foreach (UIObjAnim objItem in item.objAnimList) {
 							if (objItem.obj != null) {
-								objItem.Stop();
+								objItem.Stop ();
 							}
 						}
 					}
@@ -182,18 +177,18 @@ namespace LowoUN.Module.UI
 		}
 
 		//HACK wait for one minute to play ui animation
-//		private IEnumerator StartObjPlay (UIObjAnim objItem) {
-//			yield return null;//下一帧执行
-//			objItem.Play();
-//		}
+		//		private IEnumerator StartObjPlay (UIObjAnim objItem) {
+		//			yield return null;//下一帧执行
+		//			objItem.Play();
+		//		}
 
 		//HACK for ui list
 		public void SetStateParams (UIStateType animType, float delayAdd) {
 			foreach (var item in uiStatesObj) {
 				if (item.animType == animType) {
 					foreach (var obj in item.objAnimList) {
-						obj.setDelayAdd(delayAdd);
-					} 
+						obj.setDelayAdd (delayAdd);
+					}
 				}
 			}
 		}
@@ -202,8 +197,8 @@ namespace LowoUN.Module.UI
 	[System.Serializable]
 	public class UIStateObj {
 		public UIStateType animType;
-		public float finishNotifyTime = 0.5f;//just send notification,but do nothing to animation
-		public int group_filter = 0;//group filter for different animation in same event
+		public float finishNotifyTime = 0.5f; //just send notification,but do nothing to animation
+		public int group_filter = 0; //group filter for different animation in same event
 		public List<UIObjAnim> objAnimList;
 		//public GameObject obj;
 		//public AnimationClip anim;
@@ -215,14 +210,14 @@ namespace LowoUN.Module.UI
 		public float delay;
 		private float delayAdd = 0;
 		public AnimationClip anim;
-		
-//		private UIStateType animType = UIStateType.None;
+
+		//		private UIStateType animType = UIStateType.None;
 		private bool hasStartTime;
 		private bool isStartTime;
 		private float timeGo;
-		
-        //public UIObjAnim () {
-        //}
+
+		//public UIObjAnim () {
+		//}
 		public void setDelayAdd (float add) {
 			delayAdd = add;
 		}
@@ -233,7 +228,7 @@ namespace LowoUN.Module.UI
 					isStartTime = false;
 					timeGo = 0;
 					//Play ();
-					UIAnimPlayer.Play(obj, anim);
+					UIAnimPlayer.Play (obj, anim);
 
 					hasStartTime = false;
 				}
@@ -243,21 +238,21 @@ namespace LowoUN.Module.UI
 		public void Play () {
 			if (!hasStartTime) {
 				//to run first frame
-				UIAnimPlayer.StopAtFirstFrame(obj, anim);
+				UIAnimPlayer.StopAtFirstFrame (obj, anim);
 				hasStartTime = true;
-				
+
 				timeGo = 0;
 				isStartTime = true;
 			}
 		}
 
-		public void Skip() {
-			UIAnimPlayer.StopAtLastFrame(obj, anim);
+		public void Skip () {
+			UIAnimPlayer.StopAtLastFrame (obj, anim);
 		}
 
-		public void Stop() {
+		public void Stop () {
 			//UIAnimPlayer.StopAtFirstFrame(obj, anim);
-			UIAnimPlayer.Stop(obj, anim);
+			UIAnimPlayer.Stop (obj, anim);
 		}
 	}
 }

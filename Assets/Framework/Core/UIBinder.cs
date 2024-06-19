@@ -2,12 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace LowoUN.Module.UI 
-{
-	public abstract class UIBinder
-	{
+namespace LowoUN.Module.UI {
+    public abstract class UIBinder {
 		protected Action<int>                       onPlayEfx; //Efx_Particle // particular for efx object to just play
 		//protected Action<int, string>             onPlayAnim;//Efx_Anim     // just play anim effect object ------> by using custom UIStateType 1,2,3 
 
@@ -92,34 +89,34 @@ namespace LowoUN.Module.UI
 				else             UILinker.instance.UpdateState (insID, objID, UIStateType.Hide);
 			};
 
-			onPlayEfx          = (objID) => UILinker.instance.PlayEfx(insID, objID);
-			onUpdateState      = (objID, stateAnim) => UILinker.instance.UpdateState(insID, objID, stateAnim);
-//			onUpdateEvent      = (objID, evtAnim) => UILinker.instance.UpdateEvent(insID, objID, evtAnim);
-			onUpdatePos        = (objID, pos) => UILinker.instance.UpdatePos(insID, objID, pos);
-			onUpdateSize       = (objID, size) => UILinker.instance.UpdateSize(insID, objID, size);
-			onUpdateTxt        = (objID, info) => UILinker.instance.UpdateTxt(insID, objID, info);
-			onUpdateTxtAlign   = (objID, align) => UILinker.instance.UpdateTextAlign(insID, objID, align);
-			onUpdateImg        = (objID, name) => UILinker.instance.UpdateImg(insID, objID, name);
-			onUpdateWebView    = (objID, url) => UILinker.instance.UpdateWebView(insID, objID, url);//, dataID , dataID
-			onUpdateColor      = (objID, newColor) => UILinker.instance.UpdateColor(insID, objID, newColor);
-			onUpdateProg   = (objID, curValue, maxValue) => UILinker.instance.UpdateProg(insID, objID, curValue, maxValue);
-			onUpdateSlider     = (objID, percent) => UILinker.instance.UpdateSlider(insID, objID, percent);
-            onUpdateSliderMaxAndMinValue = (objID, Max,Min) => UILinker.instance.UpdateSliderMaxAndMinValue(insID, objID, Max,Min);
-            onUpdateTogl     = (objID, isTriggle) => UILinker.instance.UpdateTogl(insID, objID, isTriggle);
-			onUpdateGroupIdx   = (objID, selectIdx) => UILinker.instance.UpdateGroupIdx(insID, objID, selectIdx);
-			onUpdateGroupNames = (objID, selectIdx) => UILinker.instance.UpdateGroupNames(insID, objID, selectIdx);
-			onUpdateName       = (objID, stringValue) => UILinker.instance.UpdateName(insID, objID, stringValue);
-			onUpdateIptInitStr = (objID, stringValue) => UILinker.instance.UpdateIptInitStr(insID, objID, stringValue);
-			onUpdateIptLimit   = (objID, limit) => UILinker.instance.SetIptLimit(insID, objID, limit);
-			onUpdateLstFocus   = (objID, isLoad) => UILinker.instance.UpdateLstFocus(insID, objID, isLoad);
-			//onUpdateLstFold    = (holdinsid, lstobjID, itemidx, isFold) => UILinker.instance.UpdateLstFold(holdinsid, lstobjID, itemidx, isFold);
+			onPlayEfx          				= (objID) => UILinker.instance.PlayEfx(insID, objID);
+			onUpdateState      				= (objID, stateAnim) => UILinker.instance.UpdateState(insID, objID, stateAnim);
+//			onUpdateEvent       			= (objID, evtAnim) => UILinker.instance.UpdateEvent(insID, objID, evtAnim);
+			onUpdatePos        				= (objID, pos) => UILinker.instance.UpdatePos(insID, objID, pos);
+			onUpdateSize       				= (objID, size) => UILinker.instance.UpdateSize(insID, objID, size);
+			onUpdateTxt        				= (objID, info) => UILinker.instance.UpdateTxt(insID, objID, info);
+			onUpdateTxtAlign   				= (objID, align) => UILinker.instance.UpdateTextAlign(insID, objID, align);
+			onUpdateImg        				= (objID, name) => UILinker.instance.UpdateImg(insID, objID, name);
+			onUpdateWebView    				= (objID, url) => UILinker.instance.UpdateWebView(insID, objID, url);//, dataID , dataID
+			onUpdateColor      				= (objID, newColor) => UILinker.instance.UpdateColor(insID, objID, newColor);
+			onUpdateProg   					= (objID, curValue, maxValue) => UILinker.instance.UpdateProg(insID, objID, curValue, maxValue);
+			onUpdateSlider     				= (objID, percent) => UILinker.instance.UpdateSlider(insID, objID, percent);
+            onUpdateSliderMaxAndMinValue 	= (objID, Max,Min) => UILinker.instance.UpdateSliderMaxAndMinValue(insID, objID, Max,Min);
+            onUpdateTogl     				= (objID, isTriggle) => UILinker.instance.UpdateTogl(insID, objID, isTriggle);
+			onUpdateGroupIdx   				= (objID, selectIdx) => UILinker.instance.UpdateGroupIdx(insID, objID, selectIdx);
+			onUpdateGroupNames 				= (objID, selectIdx) => UILinker.instance.UpdateGroupNames(insID, objID, selectIdx);
+			onUpdateName       				= (objID, stringValue) => UILinker.instance.UpdateName(insID, objID, stringValue);
+			onUpdateIptInitStr 				= (objID, stringValue) => UILinker.instance.UpdateIptInitStr(insID, objID, stringValue);
+			onUpdateIptLimit   				= (objID, limit) => UILinker.instance.SetIptLimit(insID, objID, limit);
+			onUpdateLstFocus   				= (objID, isLoad) => UILinker.instance.UpdateLstFocus(insID, objID, isLoad);
+			//onUpdateLstFold    			= (holdinsid, lstobjID, itemidx, isFold) => UILinker.instance.UpdateLstFold(holdinsid, lstobjID, itemidx, isFold);
 
 			//especially for Cutscene ui
-			onUpdateEmoji = (objID, emojiTexture) => UILinker.instance.UpdateEmoji(insID, objID, emojiTexture);
+			onUpdateEmoji 					= (objID, emojiTexture) => UILinker.instance.UpdateEmoji(insID, objID, emojiTexture);
 
 			//especially for PVE Map
-            onUpdateLstPos     = (objID, vet2) => UILinker.instance.UpdateLstPos(insID, objID, vet2);
-            onSetParent        = (obj, parentObjId)=> UILinker.instance.SetParent(insID,obj,parentObjId);
+            onUpdateLstPos     				= (objID, vet2) => UILinker.instance.UpdateLstPos(insID, objID, vet2);
+            onSetParent        				= (obj, parentObjId)=> UILinker.instance.SetParent(insID,obj,parentObjId);
 
             
             onUpdateRImgByT = (objID, data, assetName) => {

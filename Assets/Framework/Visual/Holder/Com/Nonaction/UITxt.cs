@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
-namespace LowoUN.Module.UI.Com
-{
-	[RequireComponent(typeof(Text))]
+namespace LowoUN.Module.UI.Com {
+	[RequireComponent (typeof (Text))]
 	public class UITxt : MonoBehaviour, IName {
 		[SerializeField]
 		private bool isShadow = false;
