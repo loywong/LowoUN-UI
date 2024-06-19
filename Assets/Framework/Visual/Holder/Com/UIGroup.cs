@@ -1,5 +1,6 @@
 ﻿#pragma warning disable 0649//ignore default value null
 using System.Collections.Generic;
+using LowoUN.Util;
 using UnityEngine;
 
 namespace LowoUN.Module.UI.Com {

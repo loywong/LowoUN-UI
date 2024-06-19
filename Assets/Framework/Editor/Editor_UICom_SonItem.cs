@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using LowoUN.Business.UI;
+using LowoUN.Util;
 using UnityEditor;
 using UnityEngine;
 
 namespace LowoUN.Module.UI.Com {
 	[CustomEditor (typeof (UISonItem))]
 	public class Editor_UICom_SonItem : Editor {
-
 		private SerializedObject obj;
 
 		private SerializedProperty itemPanelType;
