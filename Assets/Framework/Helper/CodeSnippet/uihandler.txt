@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 using LowoUN.Module.UI;
 
-namespace LowoUN.Business.UI 
-{
-	public partial class UIHandler
-	{
-		public enum Objs_$expression$
-		{
+namespace LowoUN.Business.UI {
+	public partial class UIHandler {
+		public enum Objs_$expression$ {
 			None,
 			Txt_Name,
 			Txt_Desc,
@@ -15,8 +12,7 @@ namespace LowoUN.Business.UI
 			Progress_Prog,
 		}
 		
-		public enum Evts_$expression$
-		{
+		public enum Evts_$expression$ {
 			None,
 			Btn_Close,
 		}
@@ -24,14 +20,12 @@ namespace LowoUN.Business.UI
 		#region ---------------- for holder ui inspector ----------------
 		#if UNITY_EDITOR
 		[ObjsAtt4UIInspector(UIPanelType.$expression$)]
-		public List<string> SetInspectorObjectEnum4$expression$()
-		{
+		public List<string> SetInspectorObjectEnum4$expression$() {
 			return UILinker.instance.GetEnumNameList<Objs_$expression$>();
 		}
 
 		[EvtsAtt4UIInspector(UIPanelType.$expression$)]
-		public List<string> SetInspectorEventEnum4$expression$()
-		{
+		public List<string> SetInspectorEventEnum4$expression$() {
 			return UILinker.instance.GetEnumNameList<Evts_$expression$>();
 		}
 		#endif
@@ -39,8 +33,7 @@ namespace LowoUN.Business.UI
 
 		#region ----------------- ui binder constructor -----------------
 		[UIBinderAtt(UIPanelType.$expression$)]
-		public UIBinder GetUIBinder4$expression$(int instanceID)
-		{
+		public UIBinder GetUIBinder4$expression$(int instanceID) {
 			return new UIBinder$expression$((int)UIPanelType.$expression$, instanceID);
 		}
 		#endregion
@@ -64,8 +57,7 @@ namespace LowoUN.Business.UI
 
 		#region ------ responce for the interactive ui components ------
 		[UIActionAtt((int)Evts_$expression$.Btn_Close, UIPanelType.$expression$)]
-		public void Close_$expression$(params object[] arr)
-		{
+		public void Close_$expression$(params object[] arr) {
 			//NotifyMgr.Broadcast<int> ("u2u_pve_selectStageExplore", (int)arr[0], (int)arr[1]);
 			//LowoUN.Util.Notify.NotifyMgr.Broadcast ("u2u_hero_check-card");
 		}

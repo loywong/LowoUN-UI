@@ -30,7 +30,7 @@ namespace LowoUN.Business.UI {
 
 		public override void OnBtnClose () {
 			base.OnBtnClose ();
-			LowoUN.Module.UI.UIHub.instance.CloseUI (insID);
+			UIHub.instance.CloseUI (insID);
 		}
 
 		protected override void OnEnd () {

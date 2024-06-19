@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using LowoUN.Module.UI;
+using LowoUN.Module.UI.Com;
 
 namespace LowoUN.Business.UI {
 	public partial class UIHandler {
@@ -90,7 +91,7 @@ namespace LowoUN.Business.UI {
 		/// <param name="arr">[2]: uiholder instance id</param>
 		[UIActionAtt ((int) Evts_Coms.Ipt_Test, UIPanelType.Coms)]
 		public void Ipt_Test_Coms (params object[] arr) {
-			UIHub.instance.GetBinder<UIBinderComs> ((int) arr[2]).SetIpt (arr[0].ToString (), (LowoUN.Module.UI.Com.UIIpt.Ipt_EvtTyp) arr[1]);
+			UIHub.instance.GetBinder<UIBinderComs> ((int) arr[2]).SetIpt (arr[0].ToString (), (UIIpt.Ipt_EvtTyp) arr[1]);
 		}
 		/// <summary>
 		/// Slider

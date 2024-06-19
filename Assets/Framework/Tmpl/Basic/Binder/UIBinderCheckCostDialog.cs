@@ -5,7 +5,7 @@ using UnityEngine;
 namespace LowoUN.Business.UI {
     using HolderObjs = UIHandler.Objs_CheckCostDialog;
 
-    public class UIBinderCheckCostDialog : LowoUN.Module.UI.UIBinder {
+    public class UIBinderCheckCostDialog : UIBinder {
         public System.Action<UIEnum_CheckDlgBtnType> onBtnEvent;
 
         public string _CostTitle {

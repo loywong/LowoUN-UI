@@ -20,7 +20,7 @@ namespace LowoUN.Business.UI {
 		public override void OnStart () {
 			base.OnStart ();
 
-			//onUpdateState ((int)HolderObjs.Tip_SystemNotify,LowoUN.Module.UI.UIStateType.Hide);
+			//onUpdateState ((int)HolderObjs.Tip_SystemNotify,UIStateType.Hide);
 		}
 
 		#region implemented abstract members of UIBinder
@@ -41,7 +41,7 @@ namespace LowoUN.Business.UI {
 					_isEnableAnim = false;
 
 					//close the game object instance.
-					LowoUN.Module.UI.UIHub.instance.CloseUI (insID);
+					UIHub.instance.CloseUI (insID);
 				}
 			}
 		}

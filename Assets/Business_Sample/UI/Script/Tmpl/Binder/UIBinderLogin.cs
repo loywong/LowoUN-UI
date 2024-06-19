@@ -24,7 +24,7 @@ namespace LowoUN.Business.UI {
         public override void OnBtnClose () {
             base.OnBtnClose ();
 
-            //LowoUN.Module.UI.UIHub.instance.CloseUI(insID);
+            //UIHub.instance.CloseUI(insID);
             NotifyMgr.Broadcast<int> ("UI_LoadScene", (int) Enum_GameState.Test);
         }
 

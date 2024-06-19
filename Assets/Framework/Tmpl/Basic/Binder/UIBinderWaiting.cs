@@ -24,23 +24,23 @@ namespace LowoUN.Business.UI {
 			hashcode = this.GetHashCode ();
 			notifyKey = "UI_Waiting_ServerCallback" + hashcode;
 
-			onUpdateState ((int) HolderObjs.Txt_Desc, LowoUN.Module.UI.UIStateType.Hide);
+			onUpdateState ((int) HolderObjs.Txt_Desc, UIStateType.Hide);
 			//#if RELEASE
 			//delay to show waiting dark bg
 			TimeWatcher.instance.AddWatcher (notifyKey, 2000U, false, () => {
-				onUpdateState ((int) HolderObjs.Img_Mask, LowoUN.Module.UI.UIStateType.Show);
-				onUpdateState ((int) HolderObjs.Txt_Desc, LowoUN.Module.UI.UIStateType.Show);
+				onUpdateState ((int) HolderObjs.Img_Mask, UIStateType.Show);
+				onUpdateState ((int) HolderObjs.Txt_Desc, UIStateType.Show);
 #if !RELEASE
-				onUpdateState ((int) HolderObjs.Txt_Protocol, LowoUN.Module.UI.UIStateType.Show);
+				onUpdateState ((int) HolderObjs.Txt_Protocol, UIStateType.Show);
 #endif
 				TimeWatcher.instance.RemoveWatcher (notifyKey + hashcode);
 			});
 			//#else
-			//onUpdateState((int)HolderObjs.Img_Mask, LowoUN.Module.UI.UIStateType.Show);
+			//onUpdateState((int)HolderObjs.Img_Mask, UIStateType.Show);
 			//#endif
 
 #if RELEASE
-			onUpdateState ((int) HolderObjs.Txt_Protocol, LowoUN.Module.UI.UIStateType.Hide);
+			onUpdateState ((int) HolderObjs.Txt_Protocol, UIStateType.Hide);
 #endif
 		}
 

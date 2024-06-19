@@ -1,9 +1,9 @@
-namespace LowoUN.Business.UI
-{
+using LowoUN.Module.UI;
+
+namespace LowoUN.Business.UI {
 	using HolderObjs = UIHandler.Objs_$expression$;
 
-	public class UIBinder$expression$ : LowoUN.Module.UI.UIBinder
-	{
+	public class UIBinder$expression$ : UIBinder {
 		private string _icon {
 			set{
 				onUpdateImg ((int)HolderObjs.Img_Achieve, value);
@@ -23,8 +23,7 @@ namespace LowoUN.Business.UI
 		protected override void OnLayout () { }
 
 		//if this is a item type panel, REMOVE THE CODE BELOW!!!!!!!!!!!!!!!!!!!!!!
-		public override void OnStart ()
-		{
+		public override void OnStart () {
 			base.OnStart ();
 
 			var id = 1;
@@ -36,8 +35,7 @@ namespace LowoUN.Business.UI
 		}
 
 		//if this is a normal type panel, REMOVE THE CODE BELOW!!!!!!!!!!!!!!!!!!!!!!
-		public override void OnStart (object info)
-		{
+		public override void OnStart (object info) {
 			base.OnStart (info);
 
 			var id = (int)info;

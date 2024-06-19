@@ -41,7 +41,7 @@ namespace LowoUN.Module.UI.HUDText {
 		public Vector2 GetScreenPos (Vector3 v3) {
 			if (LowoUN.Module.Cameras.Module_Camera.instance.GetCurCamera () != null) {
 				Vector3 screenPoint = LowoUN.Module.Cameras.Module_Camera.instance.GetCurCamera ().WorldToScreenPoint (v3);
-				return new Vector2 (screenPoint.x, screenPoint.y) * LowoUN.Module.UI.UIAdaptScreen.instance.GetScaleValue ();
+				return new Vector2 (screenPoint.x, screenPoint.y) * UIAdaptScreen.instance.GetScaleValue ();
 			}
 
 			return Vector2.zero;

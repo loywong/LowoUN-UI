@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using LowoUN.Module.UI;
+using LowoUN.Module.UI.Com;
 using UnityEngine;
 
 namespace LowoUN.Business.UI {
 	using HolderObjs = UIHandler.Objs_Coms;
 
 	public class UIBinderComs : UIBinder {
-
 		public UIBinderComs (int uiPanelType, int instanceID) : base (uiPanelType, instanceID) {
 
 		}
@@ -36,7 +36,7 @@ namespace LowoUN.Business.UI {
 
 		public override void OnBtnClose () {
 			base.OnBtnClose ();
-			LowoUN.Module.UI.UIHub.instance.CloseUI (insID);
+			UIHub.instance.CloseUI (insID);
 		}
 
 		protected override void OnEnd () {
@@ -49,7 +49,7 @@ namespace LowoUN.Business.UI {
 		public void SetTogl (bool isSelect) {
 			Debug.Log ("SetTogl isSelect: " + isSelect);
 		}
-		public void SetIpt (string str, LowoUN.Module.UI.Com.UIIpt.Ipt_EvtTyp state) {
+		public void SetIpt (string str, UIIpt.Ipt_EvtTyp state) {
 			Debug.Log ("SetIpt str: " + str + "/ state: " + state.ToString ());
 		}
 		public void SetSlider (float val) {

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using LowoUN.Business.UI;
-using LowoUN.Module.UI.HUDText;
 using LowoUN.Util;
 using LowoUN.Util.Notify;
 using UnityEngine;
 using UIPanelClass = LowoUN.Business.UI.UIPanelClass;
 using UIPanelType = LowoUN.Business.UI.UIPanelType;
+using LowoUN.Module.UI.HUDText;
 
 namespace LowoUN.Module.UI {
 	public sealed class UIHub {
@@ -188,7 +188,7 @@ namespace LowoUN.Module.UI {
 		}
 
 		private GameObject _notifyGo;
-		public void LoadSysNotifyUI (string des, float time = 2f, int sysNotifyType = (int) LowoUN.Module.UI.UIEnum_SysNotifyType.Center) {
+		public void LoadSysNotifyUI (string des, float time = 2f, int sysNotifyType = (int) UIEnum_SysNotifyType.Center) {
 			CloseUI (UIPanelType.SystemNotify);
 			_notifyGo = LoadUI (UIPanelType.SystemNotify);
 			UIHudText_Notify_CacheOne.instance.Setinfo (_notifyGo, des, time, sysNotifyType);
